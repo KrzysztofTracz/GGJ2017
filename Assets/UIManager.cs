@@ -2,7 +2,8 @@
 using System.Collections;
 using System;
 
-public class UIManager : MonoBehaviour {
+public class UIManager : MonoBehaviour
+{
 
 	public ScoreManager scoreManager;
 	public UnityEngine.UI.Text viewsField;
@@ -15,22 +16,27 @@ public class UIManager : MonoBehaviour {
 
 	float logClearTimer;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 	
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 		float t = scoreManager.currentRoundDuration;
 		timeField.text = String.Format ("{0:00}:{1:00}", (int)(t / 60), (int)(t % 60)); 
-		viewsField.text = Mathf.CeilToInt(scoreManager.views).ToString();
-		likesField.text = Mathf.CeilToInt(scoreManager.likes).ToString();
-		dislikesField.text = Mathf.CeilToInt(scoreManager.dislikes).ToString();
-		multiplierField.text = "x" + Mathf.RoundToInt(scoreManager.scoreMultiplier).ToString();
+		viewsField.text = Mathf.CeilToInt (scoreManager.views).ToString ();
+		likesField.text = Mathf.CeilToInt (scoreManager.likes).ToString ();
+		dislikesField.text = Mathf.CeilToInt (scoreManager.dislikes).ToString ();
+		multiplierField.text = "x" + Mathf.RoundToInt (scoreManager.scoreMultiplier).ToString ();
 
+		if (scoreManager.dangerWarning) {
+			log.text = "DANGER";
+		}
 		if (scoreManager.isFailed ()) {
 			log.text = "FAIL!";
-		} 
+		}
 
 		if (logClearTimer > logClearInterval) {
 			logClearTimer = 0;
