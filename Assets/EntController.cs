@@ -14,12 +14,19 @@ public class EntController : NetworkBehaviour {
 
     public Transform Head = null;
 
+    public CameraVisible Mesh0 = null;
+    public CameraVisible Mesh1 = null;
+
+    public Transform Fountain = null;
+
 #if UNITY_ANDROID
     [SyncVar(hook="OnPrankActiveChanged")]
 #endif
     public bool PrankActive = false;
 
     public bool PrankSuccess = false;
+
+    public bool IsVisibleInCamera = false;
 
 #if UNITY_ANDROID
     [SyncVar]
@@ -41,23 +48,29 @@ public class EntController : NetworkBehaviour {
         Head = CameraController.Instance.transform;
 
         FailIndicator = GameObject.Find("Fail");
+
+        Fountain = GameObject.Find("Fountain Target").transform;
     }
 	
     private void LateUpdate()
     {
-        if (UIController.Instance.Fail == null) return; 
-        
-        if(PrankActive && !IsFailing)
+        if (UIController.Instance.Fail == null) return;
+
+        PrankSuccess = false;
+        IsVisibleInCamera = false;
+
+        //Physics.SphereCast(Head.transform.position, SphereCastRadius, Head.transform.forward,)
+
+        var dir = Fountain.position - Head.position;
+        var angle = Vector3.Angle(Head.forward, dir);
+        if (angle < 30.0f)
+        {
+            IsVisibleInCamera = true;
+        }
+
+        if (PrankActive && !IsFailing && IsVisibleInCamera)
         {
             PrankSuccess = true;
-        }
-        else if(PrankActive && IsFailing)
-        {
-            PrankSuccess = false;
-        }
-        else if(!PrankActive)
-        {
-            PrankSuccess = false;
         }
 
         if (IsFailing)
