@@ -43,6 +43,7 @@ public class EntController : NetworkBehaviour {
     public float FailometerLimit    = 20.0f;
 
     public int Busted = 0;
+	public bool GameplayStopped = false;
 
     private void Awake()
     {

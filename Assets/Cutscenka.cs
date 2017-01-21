@@ -27,10 +27,14 @@ public class Cutscenka : MonoBehaviour {
         CameraController.Instance.transform.localRotation = Quaternion.identity;
         CameraController.Instance.enabled = false;
         EntController.Player.gameObject.SetActive(false);
+
+		EntController.Player.GameplayStopped = true;
     }
 
     protected virtual void OnDisable()
     {
+		EntController.Player.GameplayStopped = false;
+
         if (CameraController.Instance != null && EntController.Player != null)
         {
             CameraController.Instance.transform.SetParent(PrevCameraParent);
