@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PolicemanController : MonoBehaviour
 {
@@ -13,8 +14,23 @@ public class PolicemanController : MonoBehaviour
     public float LookAtStrength = 10.0f;
 
     public bool LookAt = false;
+    public bool Rest = false;
+
+    public float RestDistance = 5.0f;
+    public float RestTimeMin = 5.0f;
+    public float RestTimeMax = 10.0f;
+
+    public float RestTime = 0.0f;
+    public bool Resting = false;
 
     public float aaaa = 0.0f;
+
+    public NavMeshAgent NavMeshAgent = null;
+    public ActorController ActorController = null;
+
+    public bool Civil = false;
+
+    public GameObject Hat = null;
 
     // Use this for initialization
     void Start()
@@ -23,6 +39,15 @@ public class PolicemanController : MonoBehaviour
         {
             LookAt = true;
         }
+        else if(Random.value > 0.65f)
+        {
+            Rest = true;
+        }
+
+        if(Civil)
+        {
+            Hat.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -30,6 +55,17 @@ public class PolicemanController : MonoBehaviour
     {
         if (EntController.Player == null) return;
         if (EntController.Player.Head == null) return;
+
+        if(Resting)
+        {
+            RestTime -= Time.deltaTime;
+            if(RestTime <= 0.0f)
+            {
+                Resting = false;
+                NavMeshAgent.destination = ActorController.Destination;
+            }
+            return;
+        }
 
         if (LookAt)
         {
@@ -56,12 +92,33 @@ public class PolicemanController : MonoBehaviour
             }
         }
 
-        var dir = EntController.Player.Head.position - Head.position;
-        var angle = GetAngle(EntController.Player.Head.position, Head.position);
-
-        if (angle < FieldOfView)
+        if(Rest)
         {
-            EntController.Player.InSight();
+            if ((EntController.Player.Head.position - Head.position).magnitude < RestDistance)
+            {
+                if (Random.value > 0.5f)
+                {
+                    Resting = true;
+                    Rest = false;
+                    RestTime = Random.Range(RestTimeMin, RestTimeMax);
+                    NavMeshAgent.destination = transform.position;
+                }
+            }
+        }
+
+        if (!Civil)
+        {
+            var dir = EntController.Player.Head.position - Head.position;
+            var angle = GetAngle(EntController.Player.Head.position, Head.position);
+
+            if (angle < FieldOfView)
+            {
+                var hits = Physics.RaycastAll(Head.position, dir, dir.magnitude);
+                if (hits.Length == 0)
+                {
+                    EntController.Player.InSight();
+                }
+            }
         }
     }
 
