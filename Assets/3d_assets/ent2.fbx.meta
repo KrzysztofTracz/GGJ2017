@@ -1,0 +1,136 @@
+fileFormatVersion: 2
+guid: be4a074fe6a501f4fb7c3ea726ef9da7
+timeCreated: 1485037303
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Bn_glasses
+    100004: Bn_hand1_l
+    100006: Bn_hand1_r
+    100008: Bn_hand2_l
+    100010: Bn_hand2_r
+    100012: Bn_hat
+    100014: Bn_leg1_L
+    100016: Bn_leg1_pole_L
+    100018: Bn_leg1_pole_R
+    100020: Bn_leg1_R
+    100022: Bn_leg2_L
+    100024: Bn_leg2_R
+    100026: Bn_leg_IK_l
+    100028: Bn_leg_IK_r
+    100030: Bn_pelvis
+    100032: Bn_root
+    100034: Bn_spine1
+    100036: Bn_spine2
+    100038: Bn_toe_1_L
+    100040: Bn_toe_1_R
+    100042: Bn_toe_2_L
+    100044: Bn_toe_2_R
+    100046: Bn_toe_3_L
+    100048: Bn_toe_3_R
+    100050: ent
+    100052: //RootNode
+    400000: Armature
+    400002: Bn_glasses
+    400004: Bn_hand1_l
+    400006: Bn_hand1_r
+    400008: Bn_hand2_l
+    400010: Bn_hand2_r
+    400012: Bn_hat
+    400014: Bn_leg1_L
+    400016: Bn_leg1_pole_L
+    400018: Bn_leg1_pole_R
+    400020: Bn_leg1_R
+    400022: Bn_leg2_L
+    400024: Bn_leg2_R
+    400026: Bn_leg_IK_l
+    400028: Bn_leg_IK_r
+    400030: Bn_pelvis
+    400032: Bn_root
+    400034: Bn_spine1
+    400036: Bn_spine2
+    400038: Bn_toe_1_L
+    400040: Bn_toe_1_R
+    400042: Bn_toe_2_L
+    400044: Bn_toe_2_R
+    400046: Bn_toe_3_L
+    400048: Bn_toe_3_R
+    400050: ent
+    400052: //RootNode
+    4300000: ent
+    7400000: Armature|footIntoWater
+    7400002: Armature|idle_chill
+    7400004: Armature|idle_footInWater
+    7400006: Armature|idle_footUp
+    9500000: //RootNode
+    13700000: ent
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
