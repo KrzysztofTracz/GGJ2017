@@ -26,6 +26,23 @@ public class SpawnDirector : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		
-	}
+        ElapsedTime += Time.deltaTime;
+
+        var currentTime = ElapsedTime / TotalTime;
+
+        var activeSpawners = SpawnersActivity.Evaluate(currentTime);
+        var spawnDelayMin = SpawnDelayMin.Evaluate(currentTime);
+        var spawnDelayMax = SpawnDelayMax.Evaluate(currentTime);
+
+        for (int i=0;((float)i)<activeSpawners;i++)
+        {
+            if(!Spawners[i].gameObject.activeSelf)
+            {
+                Spawners[i].gameObject.SetActive(true);
+            }
+
+            Spawners[i].SpawnDelayMin = spawnDelayMin;
+            Spawners[i].SpawnDelayMax = spawnDelayMax;
+        }
+    }
 }
