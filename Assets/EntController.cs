@@ -40,6 +40,8 @@ public class EntController : NetworkBehaviour {
     public float FailometerStrength =  5.0f;
     public float FailometerLimit    = 20.0f;
 
+    public int Busted = 0;
+
     private void Awake()
     {
         Player = this;
@@ -91,17 +93,6 @@ public class EntController : NetworkBehaviour {
             Failometer -= FailometerCooldown * Time.deltaTime;
         }
 
-        if(Failometer < 0)
-        {
-            Failometer = 0;
-        }
-        else if(Failometer >= FailometerLimit)
-        {
-            CameraController.Instance.Cutscenka.gameObject.SetActive(true);
-            Failometer = 0.0f;
-            UIController.Instance.Fail.SetActive(false);
-        }
-        
         if (IsFailing)
         {
             UIController.Instance.Fail.SetActive(true);
@@ -112,6 +103,26 @@ public class EntController : NetworkBehaviour {
             UIController.Instance.Fail.SetActive(false);
         }
 
+        if (Failometer < 0)
+        {
+            Failometer = 0;
+        }
+        else if(Failometer >= FailometerLimit)
+        {
+            Failometer = 0.0f;
+            UIController.Instance.Fail.SetActive(false);
+            Busted++;
+
+            if(Busted >= 3)
+            {
+                CameraController.Instance.BadEnding.gameObject.SetActive(true);
+            }    
+            else
+            {
+                CameraController.Instance.Cutscenka.gameObject.SetActive(true);
+            }        
+        }
+        
 		IsBeingSpotted = false; // reset for the next frame
     }
 

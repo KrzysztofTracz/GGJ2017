@@ -17,6 +17,8 @@ public class CameraController : MonoBehaviour
     private Vector3 baseRotation = Vector3.zero;
 
     public Cutscenka Cutscenka = null;
+    public Ending Ending = null;
+    public Ending BadEnding = null;
 
     private void Awake()
     {
