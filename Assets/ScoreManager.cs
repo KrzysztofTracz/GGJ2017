@@ -6,33 +6,51 @@ public class ScoreManager : MonoBehaviour {
 
 	public GameObject footSymbol; // TODO: remove when integrated
 	public float timeBetweenFailChecks = 3; // TODO: remove when integrated
-	public float failCheckTimer;
-	public float viewsExponentScale = 0.25f;
-	public float likesExponentScale = 0.1f;
+	public float viewsExponentScale = 0.01f;
+	public float likesExponentScale = 0.01f;
+	public float difficultyScale;
+	public float difficultyIncrementPerSecond = 0.002f;
+	public float currentRoundDuration;
+	public bool roundActive = true;
 
 	public bool footInWater;
+	float failCheckTimer;
 
-	public int views;
-	public int likes;
-	public int dislikes;
+	public float views;
+	public float likes;
+	public float dislikes;
 	float latestDurationInWater; 
 	float currentDurationInWater;
 	float enterTime;
 	bool currentFail;
-	public int scoreMultiplier;
+	public float scoreMultiplier;
 
 	// Use this for initialization
 	void Start () {
 		footInWater = false;
-		latestDurationInWater = 0.0f;
-		enterTime = 0.0f;
+		latestDurationInWater = 0;
+		enterTime = 0;
 		views = 0;
 
 		failCheckTimer = 0;
+		difficultyScale = 0.01f;
+		currentRoundDuration = .0f;
+		scoreMultiplier = 1;
 	}
 	
 	// Update is called once per frame
 	void Update () {		
+
+		// do not update values if round is over
+		if (roundActive == false) {
+			return; 
+		}
+
+		// increment round duration counter
+		currentRoundDuration += Time.deltaTime;
+
+		// increase difficulty with time
+		difficultyScale += difficultyIncrementPerSecond * Time.deltaTime;
 
 		if (footInWater) {
 			currentDurationInWater += Time.deltaTime;
@@ -44,12 +62,12 @@ public class ScoreManager : MonoBehaviour {
 
 			}
 
-			int newViews = scoreMultiplier * Mathf.RoundToInt(Mathf.Exp(viewsExponentScale*currentDurationInWater-1) * 10);
-			int newLikes = scoreMultiplier * Mathf.RoundToInt(Mathf.Exp(likesExponentScale*currentDurationInWater-1) * 10);
+			float newViews = scoreMultiplier * Mathf.Exp(viewsExponentScale*currentDurationInWater-1);
+			float newLikes = scoreMultiplier * Mathf.Exp(likesExponentScale*currentDurationInWater-1);
 			views += newViews;
 			likes += newLikes;
 			if (currentFail) {
-				dislikes += Mathf.RoundToInt(Mathf.Exp (viewsExponentScale * currentDurationInWater - 1) * 10);
+				dislikes += Mathf.RoundToInt(Mathf.Exp (viewsExponentScale * currentDurationInWater - 1));
 			} else {
 				dislikes += Mathf.RoundToInt(newLikes/10);
 			}				
