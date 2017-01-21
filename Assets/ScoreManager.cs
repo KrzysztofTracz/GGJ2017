@@ -72,8 +72,7 @@ public class ScoreManager : MonoBehaviour
 //			dangerWarning = true;
 //		}
 
-		if (footInWater && EntController.Player.IsVisibleInCamera ) {
-			currentDurationInWater += Time.deltaTime;
+		if (footInWater) {			
 
 			if(EntController.Player.IsFailing) {
 //			if (failCheckTimer > timeBetweenFailChecks) {
@@ -81,15 +80,19 @@ public class ScoreManager : MonoBehaviour
 				currentDurationInWater = 0.0f;
 				scoreMultiplier = 1;
 			} 
-			float newViews = scoreMultiplier * Mathf.Exp (viewsExponentScale * currentDurationInWater - 1);
-			float newLikes = scoreMultiplier * Mathf.Exp (likesExponentScale * currentDurationInWater - 1);
-			views += newViews;
-			likes += newLikes;
-			if (currentFail) {
-				dislikes += Mathf.RoundToInt (Mathf.Exp (viewsExponentScale * currentDurationInWater - 1));
-			} else {
-				dislikes += Mathf.RoundToInt (newLikes / 10);
-			}				
+
+			if (EntController.Player.IsVisibleInCamera) {
+				currentDurationInWater += Time.deltaTime;
+				float newViews = scoreMultiplier * Mathf.Exp (viewsExponentScale * currentDurationInWater - 1);
+				float newLikes = scoreMultiplier * Mathf.Exp (likesExponentScale * currentDurationInWater - 1);
+				views += newViews;
+				likes += newLikes;
+				if (currentFail) {
+					dislikes += Mathf.RoundToInt (Mathf.Exp (viewsExponentScale * currentDurationInWater - 1));
+				} else {
+					dislikes += Mathf.RoundToInt (newLikes / 10);
+				}				
+			}
 		}
 
 		// fail check (emulating being caught)
@@ -112,7 +115,7 @@ public class ScoreManager : MonoBehaviour
 	// called when leaving fountain
 	public void FootExit ()
 	{	
-		if (currentFail == false) {
+		if (currentFail == false && EntController.Player.IsVisibleInCamera) {
 			scoreMultiplier += 1;
 		}
 		footInWater = false;
