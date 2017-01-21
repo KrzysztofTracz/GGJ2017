@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class EntController : MonoBehaviour {
+public class EntController : NetworkBehaviour {
 
     public static EntController Player = null;
 
@@ -12,9 +13,12 @@ public class EntController : MonoBehaviour {
     public GameObject FailIndicator = null;
 
     public Transform Head = null;
+    
+    [SyncVar(hook="OnPrankActiveChanged")]
+    public bool PrankActive = false;
 
-    public bool PrankActive { get; private set; }
-    public bool IsFailing { get; private set; }
+    [SyncVar]
+    public bool IsFailing = false;
 
     private void Awake()
     {
@@ -24,32 +28,36 @@ public class EntController : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        PrankActive = false;
-        IsFailing = false;
+        LegActive.SetActive(true);
+        LegInactive.SetActive(true);
 
-        LegActive.SetActive(false);
-        LegInactive.SetActive(false);
+        EntSocket.Instance.Attach(transform);
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if(Input.GetMouseButton(0))
-        {
-            PrankActive = true;
-            LegActive.SetActive(true);
-            LegInactive.SetActive(false);
-        }
-        else
-        {
-            PrankActive = false;
-            LegActive.SetActive(false);
-            LegInactive.SetActive(true);
-        }
+        //if(!isServer)
+        //{
+        //    if (Input.GetMouseButton(0) || Input.GetKey("space"))
+        //    {
+        //        PrankActive = true;
+        //        LegActive.SetActive(true);
+        //        LegInactive.SetActive(false);
+        //    }
+        //    else
+        //    {
+        //        PrankActive = false;
+        //        LegActive.SetActive(false);
+        //        LegInactive.SetActive(true);
+        //    }
+        //}
 	}
 
     private void LateUpdate()
     {
+        if (FailIndicator == null) return; 
+
         if(IsFailing)
         {
             FailIndicator.SetActive(true);
@@ -69,5 +77,23 @@ public class EntController : MonoBehaviour {
     public void Fail()
     {
         IsFailing = true;
+    }
+
+    public void OnPrankActiveChanged(bool prankActive)
+    {
+        //if (isServer)
+        //{
+            PrankActive = prankActive;
+            if (prankActive)
+            {
+                LegActive.SetActive(true);
+                LegInactive.SetActive(false);
+            }
+            else
+            {
+                LegActive.SetActive(false);
+                LegInactive.SetActive(true);
+            }
+        //}
     }
 }

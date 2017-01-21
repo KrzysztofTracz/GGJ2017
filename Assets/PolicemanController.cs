@@ -16,6 +16,9 @@ public class PolicemanController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        if (EntController.Player == null) return;
+        if (EntController.Player.Head == null) return;
+
         var dir   = EntController.Player.Head.position - Head.position;
         var angle = Vector3.Angle(Head.forward, dir);
         if(angle < FieldOfView)

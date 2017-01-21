@@ -1,31 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class CameraController : MonoBehaviour
 {
+    public static CameraController Instance = null;
+
     public float RotationMovement = 5.0f;
 
     private float rotationX = 0.0f;
     private float rotationY = 0.0f;
 
-    private Vector3 baseRotation = Vector3.zero; 
+    public bool isServer = true;
+    
+    private Vector3 baseRotation = Vector3.zero;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Use this for initialization
     void Start ()
     {
         baseRotation = transform.rotation.eulerAngles;
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        rotationY += RotationMovement * Input.GetAxis("Mouse X");
-        rotationX -= RotationMovement * Input.GetAxis("Mouse Y");
+        if (isServer)
+        {
+            rotationY += RotationMovement * Input.GetAxis("Mouse X");
+            rotationX -= RotationMovement * Input.GetAxis("Mouse Y");
 
-        transform.rotation = Quaternion.Euler(baseRotation + new Vector3(rotationX, rotationY, 0.0f));
+            transform.rotation = Quaternion.Euler(baseRotation + new Vector3(rotationX, rotationY, 0.0f));
+        }
     }
 }
