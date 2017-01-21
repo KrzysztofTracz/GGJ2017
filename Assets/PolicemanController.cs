@@ -102,7 +102,11 @@ public class PolicemanController : MonoBehaviour
 
         if (angle < FieldOfView)
         {
-            EntController.Player.InSight();
+            var hits = Physics.RaycastAll(Head.position, dir, dir.magnitude);
+            if(hits.Length == 0)
+            {
+                EntController.Player.InSight();
+            }
         }
     }
 
