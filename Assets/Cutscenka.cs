@@ -17,7 +17,7 @@ public class Cutscenka : MonoBehaviour {
         Instance = this;
     }
 
-    void OnEnable()
+    protected virtual void OnEnable()
     {
         ElapsedTime = 0.0f;
         PrevCameraParent = CameraController.Instance.transform.parent;
@@ -29,7 +29,7 @@ public class Cutscenka : MonoBehaviour {
         EntController.Player.gameObject.SetActive(false);
     }
 
-    void OnDisable()
+    protected virtual void OnDisable()
     {
         if (CameraController.Instance != null && EntController.Player != null)
         {
@@ -42,7 +42,7 @@ public class Cutscenka : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update ()
+    protected virtual void Update ()
     {
         ElapsedTime += Time.deltaTime;
         if(ElapsedTime >= TotalTime)
