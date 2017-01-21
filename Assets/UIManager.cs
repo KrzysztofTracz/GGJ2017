@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
 		viewsField.text = Mathf.CeilToInt (scoreManager.views).ToString ();
 		likesField.text = Mathf.CeilToInt (scoreManager.likes).ToString ();
 		dislikesField.text = Mathf.CeilToInt (scoreManager.dislikes).ToString ();
-		subsField.text = "" + Mathf.RoundToInt (scoreManager.scoreMultiplier * 1000 + UnityEngine.Random.Range(-500,500)).ToString ();
+		subsField.text = "x" + Mathf.CeilToInt (scoreManager.subs).ToString ();
 
 		if (scoreManager.dangerWarning) {
 			log.text = "DANGER";

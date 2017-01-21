@@ -22,6 +22,7 @@ public class ScoreManager : MonoBehaviour
 	bool currentFail;
 	public bool dangerWarning;
 	public float scoreMultiplier;
+	public float oneSecondTimer = 0;
 
 	// Use this for initialization
 	void Start ()
@@ -37,6 +38,7 @@ public class ScoreManager : MonoBehaviour
 	// Update is called once per frame
 	void LateUpdate ()
 	{		
+
 		if(footInWater == false && EntController.Player.PrankActive) {
 			FootEnter ();
 		}
@@ -48,7 +50,15 @@ public class ScoreManager : MonoBehaviour
 		if (roundActive == false) {
 			return; 
 		}
+
+
+		oneSecondTimer += Time.deltaTime;
+
 		currentRoundDuration += Time.deltaTime;
+
+		if (oneSecondTimer > 1) {			
+			subs = scoreMultiplier * 100 + UnityEngine.Random.Range(-50,50);
+		}
 
 		// increase difficulty with time
 		difficultyScale += difficultyIncrementPerSecond * Time.deltaTime;
@@ -58,7 +68,10 @@ public class ScoreManager : MonoBehaviour
 			if(EntController.Player.IsBeingSpotted) {
 				currentFail = true;
 				currentDurationInWater = 0.0f;
-				scoreMultiplier = 1;			
+				scoreMultiplier = 1;	
+				if (oneSecondTimer > 1) {			
+					subs = scoreMultiplier * 100 + UnityEngine.Random.Range (-50, 50);
+				}
 			} 
 			float newViews = 0;
 			float newLikes = 0;
@@ -77,6 +90,11 @@ public class ScoreManager : MonoBehaviour
 			if(EntController.Player.IsBeingSpotted) {				
 				dislikes += currentRoundDuration * difficultyScale;
 			} 
+
+
+		}
+		if (oneSecondTimer > 1) {
+			oneSecondTimer = 0;
 		}
 	}
 
