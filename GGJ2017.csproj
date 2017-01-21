@@ -93,6 +93,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ActorController.cs" />
+    <Compile Include="Assets\ActorSpawner.cs" />
     <Compile Include="Assets\CameraController.cs" />
     <Compile Include="Assets\CameraSync.cs" />
     <Compile Include="Assets\CameraVisible.cs" />
