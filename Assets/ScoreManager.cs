@@ -6,17 +6,16 @@ public class ScoreManager : MonoBehaviour
 	public float viewsExponentScale = 0.01f;
 	public float likesExponentScale = 0.01f;
 	public float difficultyScale;
-	public float difficultyIncrementPerSecond = 0.002f;
+	public float difficultyIncrementPerSecond = 0.01f;
 	public float currentRoundDuration;
 	public bool roundActive = true;
 
 	public bool footInWater;
-	float failCheckTimer;
 
 	public float views;
 	public float likes;
 	public float dislikes;
-	float latestDurationInWater;
+//	float latestDurationInWater;
 	float currentDurationInWater;
 	float enterTime;
 	bool currentFail;
@@ -27,11 +26,11 @@ public class ScoreManager : MonoBehaviour
 	void Start ()
 	{
 		footInWater = false;
-		latestDurationInWater = 0;
+//		latestDurationInWater = 0;
 		enterTime = 0;
 		views = 0;
 
-		failCheckTimer = 0;
+//		failCheckTimer = 0;
 		difficultyScale = 0.01f;
 		currentRoundDuration = .0f;
 		scoreMultiplier = 1;
@@ -39,7 +38,7 @@ public class ScoreManager : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	void LateUpdate ()
 	{		
 		if(footInWater == false && EntController.Player.PrankActive) {
 			FootEnter ();
@@ -52,33 +51,35 @@ public class ScoreManager : MonoBehaviour
 		if (roundActive == false) {
 			return; 
 		}
-
+		currentRoundDuration += Time.deltaTime;
 
 		// increase difficulty with time
 		difficultyScale += difficultyIncrementPerSecond * Time.deltaTime;
 
 		if (footInWater) {			
 			// increment round duration counter
-			currentRoundDuration += Time.deltaTime;
-
-			if(EntController.Player.IsFailing) {
+			Debug.Log ("c");
+			if(EntController.Player.IsBeingSpotted) {
 				currentFail = true;
 				currentDurationInWater = 0.0f;
 				scoreMultiplier = 1;
 			} 
-
+			float newViews = 0;
+			float newLikes = 0;
 			if (EntController.Player.IsVisibleInCamera) {
 				currentDurationInWater += Time.deltaTime;
-				float newViews = scoreMultiplier * Mathf.Exp (viewsExponentScale * currentDurationInWater - 1);
-				float newLikes = scoreMultiplier * Mathf.Exp (likesExponentScale * currentDurationInWater - 1);
-				views += newViews;
-				likes += newLikes;
-				if (currentFail) {
-					dislikes += Mathf.RoundToInt (Mathf.Exp (viewsExponentScale * currentDurationInWater - 1));
-				} else {
-					dislikes += Mathf.RoundToInt (newLikes / 10);
-				}				
+				newViews = scoreMultiplier * Mathf.Exp (viewsExponentScale * currentDurationInWater) - 1;
+				newLikes = scoreMultiplier * Mathf.Exp (likesExponentScale * currentDurationInWater) - 1;
+				if (currentFail == false) {
+					views += newViews;
+					likes += newLikes;
+				}
 			}
+			if (currentFail) {
+				dislikes += Mathf.RoundToInt (Mathf.Exp (viewsExponentScale * currentDurationInWater) - 1);
+			} else {
+				dislikes += Mathf.RoundToInt ( (newLikes>1 ? newLikes : 1) / 10);
+			}	
 		}
 	}
 
@@ -99,7 +100,7 @@ public class ScoreManager : MonoBehaviour
 		}
 		footInWater = false;
 		currentFail = false;
-		latestDurationInWater = Time.realtimeSinceStartup - enterTime;
+//		latestDurationInWater = Time.realtimeSinceStartup - enterTime;
 	}
 
 	public bool isFootInWater ()
