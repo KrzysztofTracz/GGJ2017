@@ -80,7 +80,7 @@ public class CommentsScript : MonoBehaviour {
         }
         else
         {
-            likeDislikeRatio = likeCount / (likeCount + dislikeCount);
+            likeDislikeRatio = (float)likeCount / (likeCount + dislikeCount);
         }
     }
 
