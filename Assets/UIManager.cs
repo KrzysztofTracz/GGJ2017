@@ -37,6 +37,9 @@ public class UIManager : MonoBehaviour
 		dislikesField.text = Mathf.CeilToInt (scoreManager.dislikes).ToString ();
 		subsField.text = "x" + Mathf.CeilToInt (scoreManager.subs).ToString ();
 
+		Slider slider = GameObject.Find ("Slider").GetComponent<Slider>();
+		slider.value = scoreManager.currentRoundDuration / scoreManager.maxDuration;
+
 		if (scoreManager.dangerWarning) {
 			log.text = "DANGER";
 		}
