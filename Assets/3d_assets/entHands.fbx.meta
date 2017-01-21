@@ -86,7 +86,335 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|footIntoWater
+      takeName: Armature|footIntoWater
+      firstFrame: 0
+      lastFrame: 13
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bn_root
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg1_pole_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg1_pole_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_l
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_l/Bn_toe_1_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_l/Bn_toe_2_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_l/Bn_toe_3_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_r
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_r/Bn_toe_1_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_r/Bn_toe_2_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_r/Bn_toe_3_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_pelvis
+        weight: 1
+      - path: Armature/Bn_root/Bn_pelvis/Bn_leg1_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_pelvis/Bn_leg1_L/Bn_leg2_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_pelvis/Bn_leg1_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_pelvis/Bn_leg1_R/Bn_leg2_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_glasses
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_hand1_l
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_hand1_l/Bn_hand2_l
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_hand1_r
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_hand1_r/Bn_hand2_r
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_hat
+        weight: 1
+      - path: entHands
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|idle_chill
+      takeName: Armature|idle_chill
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bn_root
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg1_pole_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg1_pole_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_l
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_l/Bn_toe_1_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_l/Bn_toe_2_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_l/Bn_toe_3_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_r
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_r/Bn_toe_1_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_r/Bn_toe_2_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_r/Bn_toe_3_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_pelvis
+        weight: 1
+      - path: Armature/Bn_root/Bn_pelvis/Bn_leg1_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_pelvis/Bn_leg1_L/Bn_leg2_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_pelvis/Bn_leg1_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_pelvis/Bn_leg1_R/Bn_leg2_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_glasses
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_hand1_l
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_hand1_l/Bn_hand2_l
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_hand1_r
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_hand1_r/Bn_hand2_r
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_hat
+        weight: 1
+      - path: entHands
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|idle_footInWater
+      takeName: Armature|idle_footInWater
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bn_root
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg1_pole_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg1_pole_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_l
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_l/Bn_toe_1_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_l/Bn_toe_2_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_l/Bn_toe_3_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_r
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_r/Bn_toe_1_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_r/Bn_toe_2_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_r/Bn_toe_3_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_pelvis
+        weight: 1
+      - path: Armature/Bn_root/Bn_pelvis/Bn_leg1_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_pelvis/Bn_leg1_L/Bn_leg2_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_pelvis/Bn_leg1_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_pelvis/Bn_leg1_R/Bn_leg2_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_glasses
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_hand1_l
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_hand1_l/Bn_hand2_l
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_hand1_r
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_hand1_r/Bn_hand2_r
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_hat
+        weight: 1
+      - path: entHands
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|idle_footUp
+      takeName: Armature|idle_footUp
+      firstFrame: 0
+      lastFrame: 44
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bn_root
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg1_pole_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg1_pole_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_l
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_l/Bn_toe_1_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_l/Bn_toe_2_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_l/Bn_toe_3_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_r
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_r/Bn_toe_1_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_r/Bn_toe_2_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_leg_IK_r/Bn_toe_3_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_pelvis
+        weight: 1
+      - path: Armature/Bn_root/Bn_pelvis/Bn_leg1_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_pelvis/Bn_leg1_L/Bn_leg2_L
+        weight: 1
+      - path: Armature/Bn_root/Bn_pelvis/Bn_leg1_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_pelvis/Bn_leg1_R/Bn_leg2_R
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_glasses
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_hand1_l
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_hand1_l/Bn_hand2_l
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_hand1_r
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_hand1_r/Bn_hand2_r
+        weight: 1
+      - path: Armature/Bn_root/Bn_spine1/Bn_spine2/Bn_hat
+        weight: 1
+      - path: entHands
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

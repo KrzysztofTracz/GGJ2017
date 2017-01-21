@@ -19,6 +19,8 @@ public class EntController : NetworkBehaviour {
 
     public Transform Fountain = null;
 
+    public Animator Animator = null;
+
 #if UNITY_ANDROID
     [SyncVar(hook="OnPrankActiveChanged")]
 #endif
@@ -60,6 +62,8 @@ public class EntController : NetworkBehaviour {
         FailIndicator = GameObject.Find("Fail");
 
         Fountain = GameObject.Find("Fountain Target").transform;
+
+        Animator.SetBool("FootUp", true);
     }
 	
     private void Update()
@@ -143,13 +147,17 @@ public class EntController : NetworkBehaviour {
         PrankActive = prankActive;
         if (prankActive)
         {
-            LegActive.SetActive(true);
-            LegInactive.SetActive(false);
+            Animator.SetBool("FootUp", false);
+
+            //LegActive.SetActive(true);
+            //LegInactive.SetActive(false);
         }
         else
         {
-            LegActive.SetActive(false);
-            LegInactive.SetActive(true);
+            Animator.SetBool("FootUp", true);
+
+            //LegActive.SetActive(false);
+            //LegInactive.SetActive(true);
         }
     }
 }

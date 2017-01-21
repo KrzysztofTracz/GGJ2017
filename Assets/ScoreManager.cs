@@ -5,8 +5,8 @@ public class ScoreManager : MonoBehaviour
 {
 	public float viewsExponentScale = 0.02f;
 	public float likesExponentScale = 0.02f;
-	public float difficultyScale= 0.0001f;
-	public float difficultyIncrementPerSecond = 0.0001f;
+	public float difficultyScale= 0.01f;
+	public float difficultyIncrementPerSecond = 0.01f;
 	public float currentRoundDuration;
 	public float maxDuration = 300;
 
@@ -80,6 +80,9 @@ public class ScoreManager : MonoBehaviour
 		// increase difficulty with time
 		difficultyScale += difficultyIncrementPerSecond * Time.deltaTime;
 
+		float newViews = 0;
+		float newLikes = 0;
+		float newDislikes = 0;
 		if (footInWater) {			
 			// increment round duration counter
 			if(EntController.Player.IsBeingSpotted) {
@@ -90,8 +93,6 @@ public class ScoreManager : MonoBehaviour
 					subs = GenerateSubs ();
 				}
 			} 
-			float newViews = 0;
-			float newLikes = 0;
 			if (EntController.Player.IsVisibleInCamera) {
 				currentDurationInWater += Time.deltaTime;
 				newViews = scoreMultiplier * (Mathf.Exp (viewsExponentScale * currentDurationInWater) - 1);
@@ -103,18 +104,22 @@ public class ScoreManager : MonoBehaviour
 
 
 			}
-			float newDislikes = difficultyScale * Mathf.Exp(difficultyScale * currentRoundDuration - 1);
+			newDislikes = (Mathf.Exp(difficultyScale * currentRoundDuration) - 1);
 			if(EntController.Player.IsBeingSpotted) {				
-				newDislikes += Random.Range(0, 100f * difficultyScale);
+				newDislikes += Random.Range(0, 100f)/100 * difficultyScale;
 			} 
 
 			dislikes += newDislikes;
-			views += newDislikes + currentRoundDuration;
+			views += newDislikes;
 
 		}
+		views += Time.deltaTime * Random.Range(0,100)/100;
+
 		if (oneSecondTimer > 1) {
 			oneSecondTimer = 0;
 		}
+
+
 	}
 
 	// called when entering fountain
