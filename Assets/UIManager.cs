@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		scoreManager = GameObject.Find ("ScoreManager").GetComponent<ScoreManager>();
 		viewsField = GameObject.Find ("ViewsField").GetComponent<Text> ();
 		likesField = GameObject.Find ("LikesField").GetComponent<Text> ();
 		dislikesField = GameObject.Find ("DislikesField").GetComponent<Text> ();
@@ -36,6 +37,9 @@ public class UIManager : MonoBehaviour
 		likesField.text = Mathf.CeilToInt (scoreManager.likes).ToString ();
 		dislikesField.text = Mathf.CeilToInt (scoreManager.dislikes).ToString ();
 		subsField.text = Mathf.CeilToInt (scoreManager.subs).ToString ();
+
+		Slider slider = GameObject.Find ("Slider").GetComponent<Slider>();
+		slider.value = scoreManager.currentRoundDuration / scoreManager.maxDuration;
 
 		if (scoreManager.dangerWarning) {
 			log.text = "DANGER";

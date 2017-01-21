@@ -3,12 +3,12 @@ using System.Collections;
 
 public class ScoreManager : MonoBehaviour
 {
-	public float viewsExponentScale = 0.01f;
-	public float likesExponentScale = 0.01f;
-	public float difficultyScale= 0.01f;
-	public float difficultyIncrementPerSecond = 0.01f;
+	public float viewsExponentScale = 0.02f;
+	public float likesExponentScale = 0.02f;
+	public float difficultyScale= 0.0001f;
+	public float difficultyIncrementPerSecond = 0.0001f;
 	public float currentRoundDuration;
-	public bool roundActive = true;
+	public float maxDuration = 300;
 
 	public bool footInWater;
 
@@ -34,7 +34,24 @@ public class ScoreManager : MonoBehaviour
 		scoreMultiplier = 1;
 		dangerWarning = false;
 	}
-	
+
+	float GenerateSubs() {
+		float range = 1;
+
+		float s = 0;
+
+		if (views > 10)
+			range = 5;
+		else if (views > 100)
+			range = 50;
+		else if (views > 1000) 
+			range = 500;
+
+		range = Mathf.Min (views, range);
+
+		return Mathf.Min( views, scoreMultiplier * 100 + UnityEngine.Random.Range (range, -range));
+	}
+
 	// Update is called once per frame
 	void LateUpdate ()
 	{		
@@ -47,7 +64,7 @@ public class ScoreManager : MonoBehaviour
 		}
 
 		// do not update values if round is over
-		if (roundActive == false) {
+		if (EntController.Player.GameplayStopped) {
 			return; 
 		}
 
@@ -56,8 +73,8 @@ public class ScoreManager : MonoBehaviour
 
 		currentRoundDuration += Time.deltaTime;
 
-		if (oneSecondTimer > 1) {			
-			subs = scoreMultiplier * 100 + UnityEngine.Random.Range(-50,50);
+		if (oneSecondTimer > 1) {	
+			subs = GenerateSubs ();
 		}
 
 		// increase difficulty with time
@@ -70,7 +87,7 @@ public class ScoreManager : MonoBehaviour
 				currentDurationInWater = 0.0f;
 				scoreMultiplier = 1;	
 				if (oneSecondTimer > 1) {			
-					subs = scoreMultiplier * 100 + UnityEngine.Random.Range (-50, 50);
+					subs = GenerateSubs ();
 				}
 			} 
 			float newViews = 0;
@@ -86,11 +103,13 @@ public class ScoreManager : MonoBehaviour
 
 
 			}
-			dislikes += difficultyScale * currentRoundDuration;
+			float newDislikes = difficultyScale * Mathf.Exp(difficultyScale * currentRoundDuration - 1);
 			if(EntController.Player.IsBeingSpotted) {				
-				dislikes += currentRoundDuration * difficultyScale;
+				newDislikes += Random.Range(0, 100f * difficultyScale);
 			} 
 
+			dislikes += newDislikes;
+			views += newDislikes + currentRoundDuration;
 
 		}
 		if (oneSecondTimer > 1) {
