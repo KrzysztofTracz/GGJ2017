@@ -47,6 +47,12 @@ public class ScoreManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{		
+		if(footInWater == false && EntController.Player.PrankActive) {
+			FootEnter ();
+		}
+		if (footInWater && EntController.Player.PrankActive == false) {
+			FootExit ();
+		}
 
 		// do not update values if round is over
 		if (roundActive == false) {
@@ -59,37 +65,41 @@ public class ScoreManager : MonoBehaviour
 		// increase difficulty with time
 		difficultyScale += difficultyIncrementPerSecond * Time.deltaTime;
 
-		if (failCheckTimer > timeBetweenFailChecks) {
-			dangerWarning = false;
-		} else if (failCheckTimer > timeBetweenFailChecks - 1) {
-			// detect danger for early warning 
-			dangerWarning = true;
-		}
+//		if (failCheckTimer > timeBetweenFailChecks) {
+//			dangerWarning = false;
+//		} else if (failCheckTimer > timeBetweenFailChecks - 1) {
+//			// detect danger for early warning 
+//			dangerWarning = true;
+//		}
 
-		if (footInWater) {
-			currentDurationInWater += Time.deltaTime;
+		if (footInWater) {			
 
-			if (failCheckTimer > timeBetweenFailChecks) {
+			if(EntController.Player.IsFailing) {
+//			if (failCheckTimer > timeBetweenFailChecks) {
 				currentFail = true;
 				currentDurationInWater = 0.0f;
-				scoreMultiplier = 1;					
+				scoreMultiplier = 1;
 			} 
-			float newViews = scoreMultiplier * Mathf.Exp (viewsExponentScale * currentDurationInWater - 1);
-			float newLikes = scoreMultiplier * Mathf.Exp (likesExponentScale * currentDurationInWater - 1);
-			views += newViews;
-			likes += newLikes;
-			if (currentFail) {
-				dislikes += Mathf.RoundToInt (Mathf.Exp (viewsExponentScale * currentDurationInWater - 1));
-			} else {
-				dislikes += Mathf.RoundToInt (newLikes / 10);
-			}				
+
+			if (EntController.Player.IsVisibleInCamera) {
+				currentDurationInWater += Time.deltaTime;
+				float newViews = scoreMultiplier * Mathf.Exp (viewsExponentScale * currentDurationInWater - 1);
+				float newLikes = scoreMultiplier * Mathf.Exp (likesExponentScale * currentDurationInWater - 1);
+				views += newViews;
+				likes += newLikes;
+				if (currentFail) {
+					dislikes += Mathf.RoundToInt (Mathf.Exp (viewsExponentScale * currentDurationInWater - 1));
+				} else {
+					dislikes += Mathf.RoundToInt (newLikes / 10);
+				}				
+			}
 		}
 
 		// fail check (emulating being caught)
-		if (failCheckTimer > timeBetweenFailChecks) {
-			failCheckTimer = 0;
-		}
-		failCheckTimer += Time.deltaTime;
+//		if (failCheckTimer > timeBetweenFailChecks) {
+//			failCheckTimer = 0;
+//		}
+//		failCheckTimer += Time.deltaTime;
 	}
 
 	// called when entering fountain
@@ -105,7 +115,7 @@ public class ScoreManager : MonoBehaviour
 	// called when leaving fountain
 	public void FootExit ()
 	{	
-		if (currentFail == false) {
+		if (currentFail == false && EntController.Player.IsVisibleInCamera) {
 			scoreMultiplier += 1;
 		}
 		footInWater = false;
