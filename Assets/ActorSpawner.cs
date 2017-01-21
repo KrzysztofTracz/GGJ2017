@@ -16,6 +16,8 @@ public class ActorSpawner : MonoBehaviour
 
     public float SpawnDelay = 0.0f;
 
+    public float SpawnCivilChance = 0.0f;
+
     // Use this for initialization
     void Start ()
     {
@@ -37,6 +39,12 @@ public class ActorSpawner : MonoBehaviour
     public void Spawn()
     {
         var obj = GameObject.Instantiate(PolicemanPrefab, transform.position, transform.rotation);
+
+        if(Random.value < SpawnCivilChance)
+        {
+            var policemanController = obj.GetComponent<PolicemanController>();
+            policemanController.Civil = true;
+        }
 
         var agent = obj.GetComponent<ActorController>();
         agent.SetDestination(Targets[Random.Range(0, Targets.Count)].position);
