@@ -5,10 +5,11 @@ public class ScoreManager : MonoBehaviour
 {
 	public float viewsExponentScale = 0.01f;
 	public float likesExponentScale = 0.01f;
-	public float difficultyScale= 0.01f;
-	public float difficultyIncrementPerSecond = 0.01f;
+	public float difficultyScale= 0.0001f;
+	public float difficultyIncrementPerSecond = 0.0001f;
 	public float currentRoundDuration;
 	public bool roundActive = true;
+	public float maxDuration = 300;
 
 	public bool footInWater;
 
@@ -86,9 +87,9 @@ public class ScoreManager : MonoBehaviour
 
 
 			}
-			dislikes += difficultyScale * currentRoundDuration;
+			dislikes += difficultyScale * Mathf.Exp(difficultyScale * currentRoundDuration - 1);
 			if(EntController.Player.IsBeingSpotted) {				
-				dislikes += currentRoundDuration * difficultyScale;
+				dislikes += Random.Range(0, 100f * difficultyScale);
 			} 
 
 
