@@ -35,6 +35,11 @@ public class EntController : NetworkBehaviour {
 
 	public bool IsBeingSpotted;
 
+    public float Failometer = 0.0f;
+    public float FailometerCooldown = 10.0f;
+    public float FailometerStrength =  5.0f;
+    public float FailometerLimit    = 20.0f;
+
     private void Awake()
     {
         Player = this;
@@ -77,6 +82,24 @@ public class EntController : NetworkBehaviour {
             PrankSuccess = true;
         }
 
+        if(IsFailing)
+        {
+            Failometer += FailometerStrength * Time.deltaTime;
+        }
+        else
+        {
+            Failometer -= FailometerCooldown * Time.deltaTime;
+        }
+
+        if(Failometer < 0)
+        {
+            Failometer = 0;
+        }
+        else if(Failometer >= FailometerLimit)
+        {
+            CameraController.Instance.Cutscenka.gameObject.SetActive(true);
+        }
+        
         if (IsFailing)
         {
             UIController.Instance.Fail.SetActive(true);
