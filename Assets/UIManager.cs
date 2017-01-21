@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
 	public UnityEngine.UI.Text likesField;
 	public UnityEngine.UI.Text dislikesField;
 	public UnityEngine.UI.Text log;
-	public UnityEngine.UI.Text multiplierField;
+	public UnityEngine.UI.Text subsField;
 	public UnityEngine.UI.Text timeField;
 	public float logClearInterval;
 
@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
 		likesField = GameObject.Find ("LikesField").GetComponent<Text> ();
 		dislikesField = GameObject.Find ("DislikesField").GetComponent<Text> ();
 		log = GameObject.Find ("Log").GetComponent<Text> ();
-		multiplierField = GameObject.Find ("MultiplierField").GetComponent<Text> ();
+		subsField = GameObject.Find ("SubsField").GetComponent<Text> ();
 		timeField = GameObject.Find ("TimeField").GetComponent<Text> ();
 	}
 
@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
 		viewsField.text = Mathf.CeilToInt (scoreManager.views).ToString ();
 		likesField.text = Mathf.CeilToInt (scoreManager.likes).ToString ();
 		dislikesField.text = Mathf.CeilToInt (scoreManager.dislikes).ToString ();
-		multiplierField.text = "x" + Mathf.RoundToInt (scoreManager.scoreMultiplier).ToString ();
+		subsField.text = "" + Mathf.RoundToInt (scoreManager.scoreMultiplier * 1000 + UnityEngine.Random.Range(-500,500)).ToString ();
 
 		if (scoreManager.dangerWarning) {
 			log.text = "DANGER";
