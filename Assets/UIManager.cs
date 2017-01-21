@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		scoreManager = GameObject.Find ("ScoreManager").GetComponent<ScoreManager>();
 		viewsField = GameObject.Find ("ViewsField").GetComponent<Text> ();
 		likesField = GameObject.Find ("LikesField").GetComponent<Text> ();
 		dislikesField = GameObject.Find ("DislikesField").GetComponent<Text> ();

@@ -51,6 +51,7 @@
      <Compile Include="Assets\CameraController.cs" />
      <Compile Include="Assets\CameraSync.cs" />
      <Compile Include="Assets\CameraVisible.cs" />
+     <Compile Include="Assets\CommentsScript.cs" />
      <Compile Include="Assets\Cutscenka.cs" />
      <Compile Include="Assets\Ending.cs" />
      <Compile Include="Assets\EntController.cs" />
@@ -164,6 +165,7 @@
      <Compile Include="Assets\UIManager.cs" />
      <Compile Include="Assets\UIScalingController.cs" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_TransparentOverlay.shader" />
+     <None Include="Assets\likeComments.txt" />
      <None Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\README.txt" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_DebugUVs.shader" />
      <None Include="Assets\GoogleVR\Distortion\GvrDistortion.cginc" />
@@ -175,8 +177,10 @@
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_FaceHighlight.shader" />
      <None Include="Assets\GoogleVR\Legacy\Resources\UnlitTexture.shader" />
      <None Include="Assets\Plugins\Android\proguard-gvr.txt" />
+     <None Include="Assets\dislikeComments.txt" />
      <None Include="Assets\ProCore\ProBuilder\Shader\UnlitSolidColor.shader" />
      <None Include="Assets\GoogleVR\Shaders\GvrAdditiveOverlay.shader" />
+     <None Include="Assets\nicknames.txt" />
      <None Include="Assets\ProCore\ProBuilder\Shader\DiffuseTextureBlend.shader" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_StandardVertexColor.shader" />
      <None Include="Assets\GoogleVR\Demos\Environment\DemoEnvUnlitGrayscale.shader" />
