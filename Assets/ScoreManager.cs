@@ -5,42 +5,40 @@ public class ScoreManager : MonoBehaviour
 {
 	public float viewsExponentScale = 0.01f;
 	public float likesExponentScale = 0.01f;
-	public float difficultyScale;
-	public float difficultyIncrementPerSecond = 0.002f;
+	public float difficultyScale= 0.01f;
+	public float difficultyIncrementPerSecond = 0.01f;
 	public float currentRoundDuration;
 	public bool roundActive = true;
 
 	public bool footInWater;
-	float failCheckTimer;
 
-	public float views;
-	public float likes;
-	public float dislikes;
-	float latestDurationInWater;
-	float currentDurationInWater;
+	public float views=0;
+	public float likes=0;
+	public float dislikes =0;
+	public float subs = 0;
+//	float latestDurationInWater;
+	float currentDurationInWater = .0f;
 	float enterTime;
 	bool currentFail;
 	public bool dangerWarning;
 	public float scoreMultiplier;
+	public float oneSecondTimer = 0;
 
 	// Use this for initialization
 	void Start ()
 	{
 		footInWater = false;
-		latestDurationInWater = 0;
-		enterTime = 0;
-		views = 0;
+//		latestDurationInWater = 0;
 
-		failCheckTimer = 0;
-		difficultyScale = 0.01f;
 		currentRoundDuration = .0f;
 		scoreMultiplier = 1;
 		dangerWarning = false;
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	void LateUpdate ()
 	{		
+
 		if(footInWater == false && EntController.Player.PrankActive) {
 			FootEnter ();
 		}
@@ -54,31 +52,49 @@ public class ScoreManager : MonoBehaviour
 		}
 
 
+		oneSecondTimer += Time.deltaTime;
+
+		currentRoundDuration += Time.deltaTime;
+
+		if (oneSecondTimer > 1) {			
+			subs = scoreMultiplier * 100 + UnityEngine.Random.Range(-50,50);
+		}
+
 		// increase difficulty with time
 		difficultyScale += difficultyIncrementPerSecond * Time.deltaTime;
 
 		if (footInWater) {			
 			// increment round duration counter
-			currentRoundDuration += Time.deltaTime;
-
-			if(EntController.Player.IsFailing) {
+			if(EntController.Player.IsBeingSpotted) {
 				currentFail = true;
 				currentDurationInWater = 0.0f;
-				scoreMultiplier = 1;
+				scoreMultiplier = 1;	
+				if (oneSecondTimer > 1) {			
+					subs = scoreMultiplier * 100 + UnityEngine.Random.Range (-50, 50);
+				}
 			} 
-
+			float newViews = 0;
+			float newLikes = 0;
 			if (EntController.Player.IsVisibleInCamera) {
 				currentDurationInWater += Time.deltaTime;
-				float newViews = scoreMultiplier * Mathf.Exp (viewsExponentScale * currentDurationInWater - 1);
-				float newLikes = scoreMultiplier * Mathf.Exp (likesExponentScale * currentDurationInWater - 1);
-				views += newViews;
-				likes += newLikes;
-				if (currentFail) {
-					dislikes += Mathf.RoundToInt (Mathf.Exp (viewsExponentScale * currentDurationInWater - 1));
-				} else {
-					dislikes += Mathf.RoundToInt (newLikes / 10);
-				}				
+				newViews = scoreMultiplier * (Mathf.Exp (viewsExponentScale * currentDurationInWater) - 1);
+				newLikes = scoreMultiplier * (Mathf.Exp (likesExponentScale * currentDurationInWater) - 1);
+				if (currentFail == false) {
+					views += newViews;
+					likes += newLikes;
+				}
+
+
 			}
+			dislikes += difficultyScale * currentRoundDuration;
+			if(EntController.Player.IsBeingSpotted) {				
+				dislikes += currentRoundDuration * difficultyScale;
+			} 
+
+
+		}
+		if (oneSecondTimer > 1) {
+			oneSecondTimer = 0;
 		}
 	}
 
@@ -99,7 +115,7 @@ public class ScoreManager : MonoBehaviour
 		}
 		footInWater = false;
 		currentFail = false;
-		latestDurationInWater = Time.realtimeSinceStartup - enterTime;
+//		latestDurationInWater = Time.realtimeSinceStartup - enterTime;
 	}
 
 	public bool isFootInWater ()

@@ -33,6 +33,15 @@ public class EntController : NetworkBehaviour {
 #endif
     public bool IsFailing = false;
 
+	public bool IsBeingSpotted;
+
+    public float Failometer = 0.0f;
+    public float FailometerCooldown = 10.0f;
+    public float FailometerStrength =  5.0f;
+    public float FailometerLimit    = 20.0f;
+
+    public int Busted = 0;
+
     private void Awake()
     {
         Player = this;
@@ -52,8 +61,10 @@ public class EntController : NetworkBehaviour {
         Fountain = GameObject.Find("Fountain Target").transform;
     }
 	
-    private void LateUpdate()
+    private void Update()
     {
+
+
         if (UIController.Instance.Fail == null) return;
 
         PrankSuccess = false;
@@ -73,6 +84,15 @@ public class EntController : NetworkBehaviour {
             PrankSuccess = true;
         }
 
+        if(IsFailing)
+        {
+            Failometer += FailometerStrength * Time.deltaTime;
+        }
+        else
+        {
+            Failometer -= FailometerCooldown * Time.deltaTime;
+        }
+
         if (IsFailing)
         {
             UIController.Instance.Fail.SetActive(true);
@@ -82,11 +102,34 @@ public class EntController : NetworkBehaviour {
         {
             UIController.Instance.Fail.SetActive(false);
         }
+
+        if (Failometer < 0)
+        {
+            Failometer = 0;
+        }
+        else if(Failometer >= FailometerLimit)
+        {
+            Failometer = 0.0f;
+            UIController.Instance.Fail.SetActive(false);
+            Busted++;
+
+            if(Busted >= 3)
+            {
+                CameraController.Instance.BadEnding.gameObject.SetActive(true);
+            }    
+            else
+            {
+                CameraController.Instance.Cutscenka.gameObject.SetActive(true);
+            }        
+        }
+        
+		IsBeingSpotted = false; // reset for the next frame
     }
 
     public void InSight()
     {
-        if (PrankActive) Fail();
+		IsBeingSpotted = true;
+		if (PrankActive) Fail();
     }
 
     public void Fail()

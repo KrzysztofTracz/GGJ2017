@@ -51,6 +51,8 @@
      <Compile Include="Assets\CameraController.cs" />
      <Compile Include="Assets\CameraSync.cs" />
      <Compile Include="Assets\CameraVisible.cs" />
+     <Compile Include="Assets\Cutscenka.cs" />
+     <Compile Include="Assets\Ending.cs" />
      <Compile Include="Assets\EntController.cs" />
      <Compile Include="Assets\EntSocket.cs" />
      <Compile Include="Assets\FailIndicator.cs" />
