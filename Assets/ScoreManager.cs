@@ -58,7 +58,6 @@ public class ScoreManager : MonoBehaviour
 
 		if (footInWater) {			
 			// increment round duration counter
-			Debug.Log ("c");
 			if(EntController.Player.IsBeingSpotted) {
 				currentFail = true;
 				currentDurationInWater = 0.0f;

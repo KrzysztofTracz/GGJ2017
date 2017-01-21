@@ -87,13 +87,11 @@ public class EntController : NetworkBehaviour {
             UIController.Instance.Fail.SetActive(false);
         }
 
-		Debug.Log ("r");
 		IsBeingSpotted = false; // reset for the next frame
     }
 
     public void InSight()
     {
-		Debug.Log ("s");
 		IsBeingSpotted = true;
 		if (PrankActive) Fail();
     }
