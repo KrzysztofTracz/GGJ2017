@@ -5,18 +5,19 @@ public class ScoreManager : MonoBehaviour
 {
 	public float viewsExponentScale = 0.01f;
 	public float likesExponentScale = 0.01f;
-	public float difficultyScale;
+	public float difficultyScale= 0.01f;
 	public float difficultyIncrementPerSecond = 0.01f;
 	public float currentRoundDuration;
 	public bool roundActive = true;
 
 	public bool footInWater;
 
-	public float views;
-	public float likes;
-	public float dislikes;
+	public float views=0;
+	public float likes=0;
+	public float dislikes =0;
+	public float subs = 0;
 //	float latestDurationInWater;
-	float currentDurationInWater;
+	float currentDurationInWater = .0f;
 	float enterTime;
 	bool currentFail;
 	public bool dangerWarning;
@@ -27,11 +28,7 @@ public class ScoreManager : MonoBehaviour
 	{
 		footInWater = false;
 //		latestDurationInWater = 0;
-		enterTime = 0;
-		views = 0;
 
-//		failCheckTimer = 0;
-		difficultyScale = 0.01f;
 		currentRoundDuration = .0f;
 		scoreMultiplier = 1;
 		dangerWarning = false;
@@ -61,24 +58,25 @@ public class ScoreManager : MonoBehaviour
 			if(EntController.Player.IsBeingSpotted) {
 				currentFail = true;
 				currentDurationInWater = 0.0f;
-				scoreMultiplier = 1;
+				scoreMultiplier = 1;			
 			} 
 			float newViews = 0;
 			float newLikes = 0;
 			if (EntController.Player.IsVisibleInCamera) {
 				currentDurationInWater += Time.deltaTime;
-				newViews = scoreMultiplier * Mathf.Exp (viewsExponentScale * currentDurationInWater) - 1;
-				newLikes = scoreMultiplier * Mathf.Exp (likesExponentScale * currentDurationInWater) - 1;
+				newViews = scoreMultiplier * (Mathf.Exp (viewsExponentScale * currentDurationInWater) - 1);
+				newLikes = scoreMultiplier * (Mathf.Exp (likesExponentScale * currentDurationInWater) - 1);
 				if (currentFail == false) {
 					views += newViews;
 					likes += newLikes;
 				}
+
+
 			}
-			if (currentFail) {
-				dislikes += Mathf.RoundToInt (Mathf.Exp (viewsExponentScale * currentDurationInWater) - 1);
-			} else {
-				dislikes += Mathf.RoundToInt ( (newLikes>1 ? newLikes : 1) / 10);
-			}	
+			dislikes += difficultyScale * currentRoundDuration;
+			if(EntController.Player.IsBeingSpotted) {				
+				dislikes += currentRoundDuration * difficultyScale;
+			} 
 		}
 	}
 
