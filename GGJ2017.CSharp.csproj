@@ -98,6 +98,9 @@
     <Compile Include="Assets\CameraController.cs" />
     <Compile Include="Assets\CameraSync.cs" />
     <Compile Include="Assets\CameraVisible.cs" />
+    <Compile Include="Assets\CommentsScript.cs" />
+    <Compile Include="Assets\Cutscenka.cs" />
+    <Compile Include="Assets\Ending.cs" />
     <Compile Include="Assets\EntController.cs" />
     <Compile Include="Assets\EntSocket.cs" />
     <Compile Include="Assets\FailIndicator.cs" />
@@ -248,6 +251,9 @@
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_VertexPicker.shader" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_VertexShader.shader" />
     <None Include="Assets\ProCore\ProBuilder\readme.txt" />
+    <None Include="Assets\dislikeComments.txt" />
+    <None Include="Assets\likeComments.txt" />
+    <None Include="Assets\nicknames.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

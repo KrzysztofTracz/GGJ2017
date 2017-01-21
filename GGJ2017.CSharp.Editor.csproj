@@ -217,6 +217,9 @@
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_VertexPicker.shader" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_VertexShader.shader" />
     <None Include="Assets\ProCore\ProBuilder\readme.txt" />
+    <None Include="Assets\dislikeComments.txt" />
+    <None Include="Assets\likeComments.txt" />
+    <None Include="Assets\nicknames.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
