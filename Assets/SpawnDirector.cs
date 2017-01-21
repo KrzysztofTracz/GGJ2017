@@ -10,6 +10,7 @@ public class SpawnDirector : MonoBehaviour {
 
     public AnimationCurve SpawnDelayMin = new AnimationCurve();
     public AnimationCurve SpawnDelayMax = new AnimationCurve();
+    public AnimationCurve SpawnCivil = new AnimationCurve();
 
     public float ElapsedTime = 0.0f;
     public float TotalTime   = 5.0f * 60.0f;
@@ -33,6 +34,7 @@ public class SpawnDirector : MonoBehaviour {
         var activeSpawners = SpawnersActivity.Evaluate(currentTime);
         var spawnDelayMin = SpawnDelayMin.Evaluate(currentTime);
         var spawnDelayMax = SpawnDelayMax.Evaluate(currentTime);
+        var spawnCivil = SpawnCivil.Evaluate(currentTime);
 
         for (int i=0;((float)i)<activeSpawners;i++)
         {
@@ -43,6 +45,7 @@ public class SpawnDirector : MonoBehaviour {
 
             Spawners[i].SpawnDelayMin = spawnDelayMin;
             Spawners[i].SpawnDelayMax = spawnDelayMax;
+            Spawners[i].SpawnCivilChance = spawnCivil;
         }
     }
 }

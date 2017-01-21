@@ -28,6 +28,10 @@ public class PolicemanController : MonoBehaviour
     public NavMeshAgent NavMeshAgent = null;
     public ActorController ActorController = null;
 
+    public bool Civil = false;
+
+    public GameObject Hat = null;
+
     // Use this for initialization
     void Start()
     {
@@ -38,6 +42,11 @@ public class PolicemanController : MonoBehaviour
         else if(Random.value > 0.65f)
         {
             Rest = true;
+        }
+
+        if(Civil)
+        {
+            Hat.SetActive(false);
         }
     }
 
@@ -97,15 +106,18 @@ public class PolicemanController : MonoBehaviour
             }
         }
 
-        var dir = EntController.Player.Head.position - Head.position;
-        var angle = GetAngle(EntController.Player.Head.position, Head.position);
-
-        if (angle < FieldOfView)
+        if (!Civil)
         {
-            var hits = Physics.RaycastAll(Head.position, dir, dir.magnitude);
-            if(hits.Length == 0)
+            var dir = EntController.Player.Head.position - Head.position;
+            var angle = GetAngle(EntController.Player.Head.position, Head.position);
+
+            if (angle < FieldOfView)
             {
-                EntController.Player.InSight();
+                var hits = Physics.RaycastAll(Head.position, dir, dir.magnitude);
+                if (hits.Length == 0)
+                {
+                    EntController.Player.InSight();
+                }
             }
         }
     }
