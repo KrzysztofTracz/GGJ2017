@@ -13,15 +13,20 @@ public class CommentsScript : MonoBehaviour {
     public TextAsset dislikeCommentsAsset;
     public TextAsset nicknamesAsset;
 
+    public double maxFrequency = 3;
+    public int maxSubs = 20000;
+
     private float frequency;
     private GameObject lastMessage;
+    private List<GameObject> loweringMessages;
     private string[] likeComments;
     private string[] dislikeComments;
     private string[] nicknames;
 
     private float likeDislikeRatio;
     
-    private int likeCount, dislikeCount;
+    private int likeCount, dislikeCount, subsCount;
+    private GameObject likesField, dislikesField, subsField;
     void loadFiles()
     {
         string likeString = likeCommentsAsset.text;
@@ -69,36 +74,92 @@ public class CommentsScript : MonoBehaviour {
 
     void countLikeDislikeRatio()
     {
-        likeDislikeRatio = likeCount / (likeCount + dislikeCount);
+        if (likeCount == 0 && dislikeCount == 0)
+        {
+            likeDislikeRatio = 0.5f;
+        }
+        else
+        {
+            likeDislikeRatio = likeCount / (likeCount + dislikeCount);
+        }
     }
 
     // Use this for initialization
     void Start () {
+        loadFiles();
         frequency = 0.03f;
+        likesField = GameObject.Find("LikesField");
+        dislikesField = GameObject.Find("DislikesField");
+        subsField = GameObject.Find("SubsField");
+        loweringMessages = new List<GameObject>();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		if(Random.value < frequency)
+
+    void countFrequency()
+    {
+        frequency = Mathf.Clamp(((float)subsCount / maxSubs), 0, (float)maxFrequency);
+    }
+
+    // Update is called once per frame
+    void Update () {
+
+        bool test = true;
+        test &= int.TryParse(likesField.GetComponent<Text>().text, out likeCount);
+        test &= int.TryParse(dislikesField.GetComponent<Text>().text, out dislikeCount);
+        test &= int.TryParse(subsField.GetComponent<Text>().text, out subsCount);
+        if(test)
         {
-            if(lastMessage != null)
+            countLikeDislikeRatio();
+            countFrequency();
+
+            //if (Random.value < frequency)
+            //{
+            if (lastMessage != null)
             {
                 Animator anim = lastMessage.GetComponent<Animator>();
                 anim.SetTrigger("pass");
-                //if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !anim.IsInTransition(0))
-                //{
-                //    lastMessage = Instantiate(messagePrefab, new Vector3(0, 0), Quaternion.identity);
-                //    lastMessage.transform.parent = panel;
-                //}
+                anim.speed = frequency;
+                loweringMessages.Add(lastMessage);
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("MessageAnim"))
+                {
+                    lastMessage = Instantiate(messagePrefab, new Vector3(0, 0), Quaternion.identity);
+                    lastMessage.transform.parent = panel;
+                    lastMessage.transform.localScale = new Vector3(1, 1);
+                    lastMessage.transform.GetChild(0).gameObject.GetComponent<Text>().text = randomizeNickname();
+                    lastMessage.transform.GetChild(1).gameObject.GetComponent<Text>().text = randomizeComment();
+
+                    anim = lastMessage.GetComponent<Animator>();
+                    anim.speed = frequency;
+
+                    foreach(var m in loweringMessages)
+                    {
+                        anim = m.GetComponent<Animator>();
+                        anim.speed = frequency;
+                    }
+
+                }
+                foreach(var m in loweringMessages.ToArray())
+                {
+                    if (m.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+                    {
+                        Destroy(m);
+                        loweringMessages.Remove(m);
+                    }
+                }
+                
             }
-            //else
+            else
             {
                 lastMessage = Instantiate(messagePrefab, new Vector3(0, 0), Quaternion.identity);
                 lastMessage.transform.parent = panel;
                 lastMessage.transform.localScale = new Vector3(1, 1);
                 lastMessage.transform.GetChild(0).gameObject.GetComponent<Text>().text = randomizeNickname();
                 lastMessage.transform.GetChild(1).gameObject.GetComponent<Text>().text = randomizeComment();
+
+                Animator anim = lastMessage.GetComponent<Animator>();
+                anim.speed = frequency;
             }
-        }
+
+            //}
+        } 
 	}
 }
