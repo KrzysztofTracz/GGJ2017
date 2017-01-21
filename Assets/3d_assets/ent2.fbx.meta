@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: ec2180ca501d69743b4fad50602b2bc4
-timeCreated: 1485032641
+guid: be4a074fe6a501f4fb7c3ea726ef9da7
+timeCreated: 1485037303
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -64,8 +64,6 @@ ModelImporter:
     7400002: Armature|idle_chill
     7400004: Armature|idle_footInWater
     7400006: Armature|idle_footUp
-    7400008: Armature|PoseLib
-    7400010: ent|idle_footInWater
     9500000: //RootNode
     13700000: ent
   materials:

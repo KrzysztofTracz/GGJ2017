@@ -1,75 +1,29 @@
 fileFormatVersion: 2
-guid: ec2180ca501d69743b4fad50602b2bc4
-timeCreated: 1485032641
+guid: 521832396c1956d4fb1b059f0493fa4d
+timeCreated: 1485031506
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Armature
-    100002: Bn_glasses
-    100004: Bn_hand1_l
-    100006: Bn_hand1_r
-    100008: Bn_hand2_l
-    100010: Bn_hand2_r
-    100012: Bn_hat
-    100014: Bn_leg1_L
-    100016: Bn_leg1_pole_L
-    100018: Bn_leg1_pole_R
-    100020: Bn_leg1_R
-    100022: Bn_leg2_L
-    100024: Bn_leg2_R
-    100026: Bn_leg_IK_l
-    100028: Bn_leg_IK_r
-    100030: Bn_pelvis
-    100032: Bn_root
-    100034: Bn_spine1
-    100036: Bn_spine2
-    100038: Bn_toe_1_L
-    100040: Bn_toe_1_R
-    100042: Bn_toe_2_L
-    100044: Bn_toe_2_R
-    100046: Bn_toe_3_L
-    100048: Bn_toe_3_R
-    100050: ent
-    100052: //RootNode
-    400000: Armature
-    400002: Bn_glasses
-    400004: Bn_hand1_l
-    400006: Bn_hand1_r
-    400008: Bn_hand2_l
-    400010: Bn_hand2_r
-    400012: Bn_hat
-    400014: Bn_leg1_L
-    400016: Bn_leg1_pole_L
-    400018: Bn_leg1_pole_R
-    400020: Bn_leg1_R
-    400022: Bn_leg2_L
-    400024: Bn_leg2_R
-    400026: Bn_leg_IK_l
-    400028: Bn_leg_IK_r
-    400030: Bn_pelvis
-    400032: Bn_root
-    400034: Bn_spine1
-    400036: Bn_spine2
-    400038: Bn_toe_1_L
-    400040: Bn_toe_1_R
-    400042: Bn_toe_2_L
-    400044: Bn_toe_2_R
-    400046: Bn_toe_3_L
-    400048: Bn_toe_3_R
-    400050: ent
-    400052: //RootNode
-    4300000: ent
-    7400000: Armature|footIntoWater
-    7400002: Armature|idle_chill
-    7400004: Armature|idle_footInWater
-    7400006: Armature|idle_footUp
-    7400008: Armature|PoseLib
-    7400010: ent|idle_footInWater
-    9500000: //RootNode
-    13700000: ent
+    100000: Circle
+    100002: Cube
+    100004: //RootNode
+    100006: Plane
+    400000: Circle
+    400002: Cube
+    400004: //RootNode
+    400006: Plane
+    2300000: Circle
+    2300002: Cube
+    2300004: Plane
+    3300000: Circle
+    3300002: Cube
+    3300004: Plane
+    4300000: Cube
+    4300002: Plane
+    4300004: Circle
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
@@ -130,7 +84,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
