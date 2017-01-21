@@ -3,12 +3,6 @@ using System.Collections;
 
 public class ScoreManager : MonoBehaviour
 {
-
-
-	public GameObject footSymbol;
-	// TODO: remove when integrated
-	public float timeBetweenFailChecks = 3;
-	// TODO: remove when integrated
 	public float viewsExponentScale = 0.01f;
 	public float likesExponentScale = 0.01f;
 	public float difficultyScale;
@@ -59,23 +53,15 @@ public class ScoreManager : MonoBehaviour
 			return; 
 		}
 
-		// increment round duration counter
-		currentRoundDuration += Time.deltaTime;
 
 		// increase difficulty with time
 		difficultyScale += difficultyIncrementPerSecond * Time.deltaTime;
 
-//		if (failCheckTimer > timeBetweenFailChecks) {
-//			dangerWarning = false;
-//		} else if (failCheckTimer > timeBetweenFailChecks - 1) {
-//			// detect danger for early warning 
-//			dangerWarning = true;
-//		}
-
 		if (footInWater) {			
+			// increment round duration counter
+			currentRoundDuration += Time.deltaTime;
 
 			if(EntController.Player.IsFailing) {
-//			if (failCheckTimer > timeBetweenFailChecks) {
 				currentFail = true;
 				currentDurationInWater = 0.0f;
 				scoreMultiplier = 1;
@@ -94,12 +80,6 @@ public class ScoreManager : MonoBehaviour
 				}				
 			}
 		}
-
-		// fail check (emulating being caught)
-//		if (failCheckTimer > timeBetweenFailChecks) {
-//			failCheckTimer = 0;
-//		}
-//		failCheckTimer += Time.deltaTime;
 	}
 
 	// called when entering fountain
@@ -109,7 +89,6 @@ public class ScoreManager : MonoBehaviour
 		footInWater = true;
 		currentFail = false;
 		enterTime = Time.realtimeSinceStartup;
-		footSymbol.SetActive (true);
 	}
 
 	// called when leaving fountain
@@ -121,7 +100,6 @@ public class ScoreManager : MonoBehaviour
 		footInWater = false;
 		currentFail = false;
 		latestDurationInWater = Time.realtimeSinceStartup - enterTime;
-		footSymbol.SetActive (false);
 	}
 
 	public bool isFootInWater ()
