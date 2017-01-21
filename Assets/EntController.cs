@@ -98,6 +98,8 @@ public class EntController : NetworkBehaviour {
         else if(Failometer >= FailometerLimit)
         {
             CameraController.Instance.Cutscenka.gameObject.SetActive(true);
+            Failometer = 0.0f;
+            UIController.Instance.Fail.SetActive(false);
         }
         
         if (IsFailing)
