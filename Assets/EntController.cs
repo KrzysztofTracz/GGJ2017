@@ -19,6 +19,8 @@ public class EntController : NetworkBehaviour {
 #endif
     public bool PrankActive = false;
 
+    public bool PrankSuccess = false;
+
 #if UNITY_ANDROID
     [SyncVar]
 #endif
@@ -44,8 +46,21 @@ public class EntController : NetworkBehaviour {
     private void LateUpdate()
     {
         if (UIController.Instance.Fail == null) return; 
+        
+        if(PrankActive && !IsFailing)
+        {
+            PrankSuccess = true;
+        }
+        else if(PrankActive && IsFailing)
+        {
+            PrankSuccess = false;
+        }
+        else if(!PrankActive)
+        {
+            PrankSuccess = false;
+        }
 
-        if(IsFailing)
+        if (IsFailing)
         {
             UIController.Instance.Fail.SetActive(true);
             IsFailing = false;
