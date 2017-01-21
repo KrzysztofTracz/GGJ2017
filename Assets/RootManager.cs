@@ -6,7 +6,6 @@ public class RootManager : UnityEngine.SceneManagement.SceneManager {
 
 	// Use this for initialization
 	void Start () {
-		SceneManager.LoadScene ("");
 		
 	}
 	

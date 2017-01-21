@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System;
 
@@ -18,7 +19,12 @@ public class UIManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-	
+		viewsField = GameObject.Find ("ViewsField").GetComponent<Text> ();
+		likesField = GameObject.Find ("LikesField").GetComponent<Text> ();
+		dislikesField = GameObject.Find ("DislikesField").GetComponent<Text> ();
+		log = GameObject.Find ("Log").GetComponent<Text> ();
+		multiplierField = GameObject.Find ("MultiplierField").GetComponent<Text> ();
+		timeField = GameObject.Find ("TimeField").GetComponent<Text> ();
 	}
 
 	// Update is called once per frame
