@@ -35,20 +35,24 @@ public class EntController : NetworkBehaviour {
         LegInactive.SetActive(true);
 
         EntSocket.Instance.Attach(transform);
+
+        Head = CameraController.Instance.transform;
+
+        FailIndicator = GameObject.Find("Fail");
     }
 	
     private void LateUpdate()
     {
-        if (FailIndicator == null) return; 
+        if (UIController.Instance.Fail == null) return; 
 
         if(IsFailing)
         {
-            FailIndicator.SetActive(true);
+            UIController.Instance.Fail.SetActive(true);
             IsFailing = false;
         }
         else
         {
-            FailIndicator.SetActive(false);
+            UIController.Instance.Fail.SetActive(false);
         }
     }
 
