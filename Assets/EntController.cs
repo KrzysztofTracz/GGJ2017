@@ -13,11 +13,17 @@ public class EntController : NetworkBehaviour {
     public GameObject FailIndicator = null;
 
     public Transform Head = null;
-    
+
+#if UNITY_ANDROID
     [SyncVar(hook="OnPrankActiveChanged")]
+#endif
     public bool PrankActive = false;
 
+    public bool PrankSuccess = false;
+
+#if UNITY_ANDROID
     [SyncVar]
+#endif
     public bool IsFailing = false;
 
     private void Awake()
@@ -25,47 +31,43 @@ public class EntController : NetworkBehaviour {
         Player = this;
     }
 
-    // Use this for initialization
     void Start ()
     {
         LegActive.SetActive(true);
         LegInactive.SetActive(true);
 
         EntSocket.Instance.Attach(transform);
+
+        Head = CameraController.Instance.transform;
+
+        FailIndicator = GameObject.Find("Fail");
     }
 	
-	// Update is called once per frame
-	void Update ()
-    {
-        //if(!isServer)
-        //{
-        //    if (Input.GetMouseButton(0) || Input.GetKey("space"))
-        //    {
-        //        PrankActive = true;
-        //        LegActive.SetActive(true);
-        //        LegInactive.SetActive(false);
-        //    }
-        //    else
-        //    {
-        //        PrankActive = false;
-        //        LegActive.SetActive(false);
-        //        LegInactive.SetActive(true);
-        //    }
-        //}
-	}
-
     private void LateUpdate()
     {
-        if (FailIndicator == null) return; 
-
-        if(IsFailing)
+        if (UIController.Instance.Fail == null) return; 
+        
+        if(PrankActive && !IsFailing)
         {
-            FailIndicator.SetActive(true);
+            PrankSuccess = true;
+        }
+        else if(PrankActive && IsFailing)
+        {
+            PrankSuccess = false;
+        }
+        else if(!PrankActive)
+        {
+            PrankSuccess = false;
+        }
+
+        if (IsFailing)
+        {
+            UIController.Instance.Fail.SetActive(true);
             IsFailing = false;
         }
         else
         {
-            FailIndicator.SetActive(false);
+            UIController.Instance.Fail.SetActive(false);
         }
     }
 
@@ -81,19 +83,16 @@ public class EntController : NetworkBehaviour {
 
     public void OnPrankActiveChanged(bool prankActive)
     {
-        //if (isServer)
-        //{
-            PrankActive = prankActive;
-            if (prankActive)
-            {
-                LegActive.SetActive(true);
-                LegInactive.SetActive(false);
-            }
-            else
-            {
-                LegActive.SetActive(false);
-                LegInactive.SetActive(true);
-            }
-        //}
+        PrankActive = prankActive;
+        if (prankActive)
+        {
+            LegActive.SetActive(true);
+            LegInactive.SetActive(false);
+        }
+        else
+        {
+            LegActive.SetActive(false);
+            LegInactive.SetActive(true);
+        }
     }
 }

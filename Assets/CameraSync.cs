@@ -8,30 +8,39 @@ public class CameraSync : NetworkBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-	    if(!isServer)
+        if(OfflineGame.Instance.isActiveAndEnabled)
         {
-            CameraController.Instance.transform.SetParent(transform);
-            CameraController.Instance.transform.localPosition = Vector3.zero;
-            CameraController.Instance.transform.localRotation = Quaternion.identity;
-            CameraController.Instance.transform.localScale = Vector3.one;
-
-            CameraController.Instance.isServer = false;
-            //CameraController.Instance.isServer = true;
+            AttachMeTo(CameraController.Instance.transform);
+            CameraController.Instance.isServer = true;
         }
         else
         {
-            transform.SetParent(CameraController.Instance.transform);
-            transform.localPosition = Vector3.zero;
-            transform.localRotation = Quaternion.identity;
-            transform.localScale = Vector3.one;
-
-            //CameraController.Instance.isServer = false;
-            CameraController.Instance.isServer = true;
+            if (!isServer)
+            {
+                AttachToMe(CameraController.Instance.transform);
+                CameraController.Instance.isServer = false;
+            }
+            else
+            {
+                AttachMeTo(CameraController.Instance.transform);
+                CameraController.Instance.isServer = true;
+            }
         }
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	void AttachMeTo(Transform t)
+    {
+        transform.SetParent(t);
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+        transform.localScale = Vector3.one;
+    }
+
+    void AttachToMe(Transform t)
+    {
+        t.SetParent(transform);
+        t.localPosition = Vector3.zero;
+        t.localRotation = Quaternion.identity;
+        t.localScale = Vector3.one;
+    }
 }

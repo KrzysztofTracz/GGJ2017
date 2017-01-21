@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class NetworkObjectsSpawner : NetworkBehaviour {
+public class NetworkObjectsSpawner : NetworkBehaviour
+{
 
     public List<Transform> Sockets = new List<Transform>();
     public List<GameObject> Objects = new List<GameObject>();
@@ -12,20 +13,20 @@ public class NetworkObjectsSpawner : NetworkBehaviour {
     public NetworkConnection Client = null;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {        
-		
-	}
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     public void Spawn()
     {
-        for(int i=0;i<Sockets.Count;i++)
+        for (int i = 0; i < Sockets.Count; i++)
         {
             var obj = Instantiate(Objects[i], Sockets[i].position, Sockets[i].rotation);
 
@@ -34,21 +35,20 @@ public class NetworkObjectsSpawner : NetworkBehaviour {
             if (WithClientAuthority[i])
             {
                 var ni = obj.GetComponent<NetworkIdentity>();
-                if(!ni.AssignClientAuthority(Client))
-                {
-                    int oi = 0;
-                    oi++;
-                }
-                else
-                {
-                    int oi = 0;
-                    oi++;
-                }
+                ni.AssignClientAuthority(Client);
             }
             else
             {
                 NetworkServer.Spawn(obj);
             }
+        }
+    }
+
+    public void OfflineSpawn()
+    {
+        for (int i = 0; i < Sockets.Count; i++)
+        {
+            var obj = Instantiate(Objects[i], Sockets[i].position, Sockets[i].rotation);
         }
     }
 }
