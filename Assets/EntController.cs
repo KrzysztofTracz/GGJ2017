@@ -33,6 +33,8 @@ public class EntController : NetworkBehaviour {
 #endif
     public bool IsFailing = false;
 
+	public bool IsBeingSpotted;
+
     private void Awake()
     {
         Player = this;
@@ -52,8 +54,10 @@ public class EntController : NetworkBehaviour {
         Fountain = GameObject.Find("Fountain Target").transform;
     }
 	
-    private void LateUpdate()
+    private void Update()
     {
+
+
         if (UIController.Instance.Fail == null) return;
 
         PrankSuccess = false;
@@ -82,11 +86,14 @@ public class EntController : NetworkBehaviour {
         {
             UIController.Instance.Fail.SetActive(false);
         }
+
+		IsBeingSpotted = false; // reset for the next frame
     }
 
     public void InSight()
     {
-        if (PrankActive) Fail();
+		IsBeingSpotted = true;
+		if (PrankActive) Fail();
     }
 
     public void Fail()

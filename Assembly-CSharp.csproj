@@ -46,6 +46,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ActorController.cs" />
+     <Compile Include="Assets\ActorSpawner.cs" />
      <Compile Include="Assets\CameraController.cs" />
      <Compile Include="Assets\CameraSync.cs" />
      <Compile Include="Assets\CameraVisible.cs" />
@@ -155,8 +157,10 @@
      <Compile Include="Assets\ProCore\ProBuilder\API Examples\Vertex Colors\HighlightNearestFace.cs" />
      <Compile Include="Assets\RootManager.cs" />
      <Compile Include="Assets\ScoreManager.cs" />
+     <Compile Include="Assets\SpawnDirector.cs" />
      <Compile Include="Assets\UIController.cs" />
      <Compile Include="Assets\UIManager.cs" />
+     <Compile Include="Assets\UIScalingController.cs" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_TransparentOverlay.shader" />
      <None Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\README.txt" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_DebugUVs.shader" />
