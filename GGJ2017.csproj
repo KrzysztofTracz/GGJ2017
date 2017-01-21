@@ -98,6 +98,7 @@
     <Compile Include="Assets\CameraController.cs" />
     <Compile Include="Assets\CameraSync.cs" />
     <Compile Include="Assets\CameraVisible.cs" />
+    <Compile Include="Assets\CommentsScript.cs" />
     <Compile Include="Assets\Cutscenka.cs" />
     <Compile Include="Assets\Ending.cs" />
     <Compile Include="Assets\EntController.cs" />
@@ -208,6 +209,7 @@
     <Compile Include="Assets\RootManager.cs" />
     <Compile Include="Assets\ScoreManager.cs" />
     <Compile Include="Assets\SpawnDirector.cs" />
+    <Compile Include="Assets\TransformMimic.cs" />
     <Compile Include="Assets\UIController.cs" />
     <Compile Include="Assets\UIManager.cs" />
     <Compile Include="Assets\UIScalingController.cs" />
@@ -251,6 +253,9 @@
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_VertexPicker.shader" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_VertexShader.shader" />
     <None Include="Assets\ProCore\ProBuilder\readme.txt" />
+    <None Include="Assets\dislikeComments.txt" />
+    <None Include="Assets\likeComments.txt" />
+    <None Include="Assets\nicknames.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

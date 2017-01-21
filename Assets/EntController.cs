@@ -63,7 +63,6 @@ public class EntController : NetworkBehaviour {
         Fountain = GameObject.Find("Fountain Target").transform;
 
         Animator.SetBool("FootUp", true);
-        Animator.SetBool("Chill", false);
     }
 	
     private void Update()
