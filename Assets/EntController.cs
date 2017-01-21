@@ -13,11 +13,15 @@ public class EntController : NetworkBehaviour {
     public GameObject FailIndicator = null;
 
     public Transform Head = null;
-    
+
+#if UNITY_ANDROID
     [SyncVar(hook="OnPrankActiveChanged")]
+#endif
     public bool PrankActive = false;
 
+#if UNITY_ANDROID
     [SyncVar]
+#endif
     public bool IsFailing = false;
 
     private void Awake()
@@ -25,7 +29,6 @@ public class EntController : NetworkBehaviour {
         Player = this;
     }
 
-    // Use this for initialization
     void Start ()
     {
         LegActive.SetActive(true);
@@ -34,26 +37,6 @@ public class EntController : NetworkBehaviour {
         EntSocket.Instance.Attach(transform);
     }
 	
-	// Update is called once per frame
-	void Update ()
-    {
-        //if(!isServer)
-        //{
-        //    if (Input.GetMouseButton(0) || Input.GetKey("space"))
-        //    {
-        //        PrankActive = true;
-        //        LegActive.SetActive(true);
-        //        LegInactive.SetActive(false);
-        //    }
-        //    else
-        //    {
-        //        PrankActive = false;
-        //        LegActive.SetActive(false);
-        //        LegInactive.SetActive(true);
-        //    }
-        //}
-	}
-
     private void LateUpdate()
     {
         if (FailIndicator == null) return; 
@@ -81,19 +64,16 @@ public class EntController : NetworkBehaviour {
 
     public void OnPrankActiveChanged(bool prankActive)
     {
-        //if (isServer)
-        //{
-            PrankActive = prankActive;
-            if (prankActive)
-            {
-                LegActive.SetActive(true);
-                LegInactive.SetActive(false);
-            }
-            else
-            {
-                LegActive.SetActive(false);
-                LegInactive.SetActive(true);
-            }
-        //}
+        PrankActive = prankActive;
+        if (prankActive)
+        {
+            LegActive.SetActive(true);
+            LegInactive.SetActive(false);
+        }
+        else
+        {
+            LegActive.SetActive(false);
+            LegInactive.SetActive(true);
+        }
     }
 }
