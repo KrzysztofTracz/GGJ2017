@@ -1,10 +1,12 @@
-﻿<Properties StartupItem="GGJ2017.CSharp.csproj">
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ScoreManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/RootManager.cs">
     <Files>
-      <File FileName="Assets/ScoreManager.cs" Line="43" Column="1" />
-      <File FileName="Assets/PositionHandle.cs" Line="21" Column="1" />
-      <File FileName="Assets/UIManager.cs" Line="41" Column="78" />
+      <File FileName="Assets/UIManager.cs" Line="22" Column="79" />
+      <File FileName="Assets/ScoreManager.cs" Line="107" Column="18" />
+      <File FileName="Assets/EntController.cs" Line="44" Column="38" />
+      <File FileName="Assets/Cutscenka.cs" Line="36" Column="39" />
+      <File FileName="Assets/RootManager.cs" Line="20" Column="59" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
