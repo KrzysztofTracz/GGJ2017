@@ -5,20 +5,37 @@ using UnityEngine.SceneManagement;
 
 public class RootManager : MonoBehaviour {
 
+	GameObject ui;
+	GameObject startButton;
 	// Use this for initialization
 	void Start () {
-		GameObject.Find ("StartButton").SetActive(true);
+		try {
+			SceneManager.UnloadScene(SceneManager.GetSceneByName("scene0"));
+		}
+		catch {
+			Debug.Log ("failed to unload scene");
+		}
+		if(ui == null) ui = GameObject.Find ("UI 1 root");			
+		if(startButton == null) startButton = GameObject.Find ("StartButton");
+		ui.SetActive(true);
+		startButton.SetActive(true);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (EntController.Player.RoundEnded) {
+		if (EntController.Player && EntController.Player.RoundEnded) {
+			EntController.Player.RoundEnded = false;
 			Start ();
+			return;
+		}
+
+		if (Input.GetKey ("z")) {
+			EntController.Player.RoundEnded = true;
 		}
 	}
 
 	public void StartRound() {		
-		GameObject.Find ("UI").SetActive(false);
+		GameObject.Find ("UI 1 root").SetActive(false);
 		SceneManager.LoadScene ("scene0", LoadSceneMode.Additive);
 		SceneManager.SetActiveScene(SceneManager.GetSceneByName("scene0"));
 	}
