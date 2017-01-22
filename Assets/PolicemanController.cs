@@ -39,6 +39,8 @@ public class PolicemanController : MonoBehaviour
 
     public Transform HEadBone = null;
 
+    public Renderer Renderer = null;
+
     // Use this for initialization
     void Start()
     {
@@ -62,6 +64,13 @@ public class PolicemanController : MonoBehaviour
     public void MakeCivilian()
     {
         Hat.SetActive(false);
+
+        var materials = Renderer.materials;
+
+        materials[1].SetColor("_Color", new Color(Random.value, Random.value, Random.value));
+        materials[2].SetColor("_Color", new Color(Random.value, Random.value, Random.value));
+
+        Renderer.materials = materials;
     }
 
     // Update is called once per frame
