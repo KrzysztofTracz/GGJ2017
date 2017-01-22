@@ -31,7 +31,7 @@ public class Lajki : MonoBehaviour {
 
     void LateUpdate()
     {
-        ShowTime -= Time.deltaTime;
+        ShowTime -= Time.deltaTime * 0.85f;
         if (ShowTime <= 0)
         {
             ShowTime = 0.0f;
