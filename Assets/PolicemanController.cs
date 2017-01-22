@@ -33,6 +33,12 @@ public class PolicemanController : MonoBehaviour
 
     public GameObject Hat = null;
 
+    public Animator Animator = null;
+
+    public Vector3 prevposition = Vector3.zero;
+
+    public Transform HEadBone = null;
+
     // Use this for initialization
     void Start()
     {
@@ -40,15 +46,17 @@ public class PolicemanController : MonoBehaviour
         {
             LookAt = true;
         }
-        else if(Random.value > 0.65f)
+        else if (Random.value > 0.65f)
         {
             Rest = true;
         }
 
-        if(Civil)
+        if (Civil)
         {
             MakeCivilian();
         }
+
+        prevposition = transform.position;
     }
 
     public void MakeCivilian()
@@ -75,9 +83,48 @@ public class PolicemanController : MonoBehaviour
                 Resting = false;
                 NavMeshAgent.destination = ActorController.Destination;
             }
-            return;
+            
+        }
+        else
+        {
+            if (Rest)
+            {
+                if ((EntController.Player.Head.position - Head.position).magnitude < RestDistance)
+                {
+                    if (Random.value > 0.5f)
+                    {
+                        Resting = true;
+                        Rest = false;
+                        RestTime = Random.Range(RestTimeMin, RestTimeMax);
+                        NavMeshAgent.destination = transform.position;
+                    }
+                }
+            }
+
+            if (!Civil)
+            {
+                var dir = EntController.Player.Head.position - Head.position;
+                var angle = GetAngle(EntController.Player.Head.position, Head.position);
+
+                if (angle < FieldOfView)
+                {
+                    var hits = Physics.RaycastAll(Head.position, dir, dir.magnitude);
+                    if (hits.Length == 0)
+                    {
+                        EntController.Player.InSight(transform.position);
+                    }
+                }
+            }
         }
 
+        var speed = (transform.position - prevposition).magnitude / Time.deltaTime;
+        prevposition = transform.position;
+
+        Animator.SetFloat("Speed", speed);
+    }
+
+    private void LateUpdate()
+    {
         if (LookAt)
         {
             var r = LookAtStrength * Time.deltaTime;
@@ -88,7 +135,7 @@ public class PolicemanController : MonoBehaviour
 
             aaaa = Vector3.Angle(Head.forward, transform.forward);
 
-            if (aaaa > 110.0f)
+            if (aaaa > 90.0f)
             {
                 rotateToTarget = false;
             }
@@ -101,35 +148,8 @@ public class PolicemanController : MonoBehaviour
             {
                 RotateTo(Head, Head.position + transform.forward, r);
             }
-        }
 
-        if(Rest)
-        {
-            if ((EntController.Player.Head.position - Head.position).magnitude < RestDistance)
-            {
-                if (Random.value > 0.5f)
-                {
-                    Resting = true;
-                    Rest = false;
-                    RestTime = Random.Range(RestTimeMin, RestTimeMax);
-                    NavMeshAgent.destination = transform.position;
-                }
-            }
-        }
-
-        if (!Civil)
-        {
-            var dir = EntController.Player.Head.position - Head.position;
-            var angle = GetAngle(EntController.Player.Head.position, Head.position);
-
-            if (angle < FieldOfView)
-            {
-                var hits = Physics.RaycastAll(Head.position, dir, dir.magnitude);
-                if (hits.Length == 0)
-                {
-                    EntController.Player.InSight(transform.position);
-                }
-            }
+            HEadBone.rotation = Head.rotation;
         }
     }
 
