@@ -128,6 +128,7 @@ public class EntController : NetworkBehaviour {
 #if UNITY_ANDROID
                 RpcBadEndinga();
 #endif
+				GameObject.Find ("IntroMusicLoop").GetComponent<AudioSource> ().Pause ();
             }
             else
             {
