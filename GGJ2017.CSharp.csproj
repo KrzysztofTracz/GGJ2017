@@ -102,6 +102,7 @@
     <Compile Include="Assets\Cutscenka.cs" />
     <Compile Include="Assets\Ending.cs" />
     <Compile Include="Assets\EntController.cs" />
+    <Compile Include="Assets\EntCutsceneAnimator.cs" />
     <Compile Include="Assets\EntSocket.cs" />
     <Compile Include="Assets\FailIndicator.cs" />
     <Compile Include="Assets\GoogleVR\Demos\Scripts\DemoInputManager.cs" />
@@ -199,6 +200,7 @@
     <Compile Include="Assets\OfflineGame.cs" />
     <Compile Include="Assets\PlatformSpecific.cs" />
     <Compile Include="Assets\PolicemanController.cs" />
+    <Compile Include="Assets\PolicemanNEtworking.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Misc\HueCube.cs" />
@@ -208,9 +210,11 @@
     <Compile Include="Assets\RootManager.cs" />
     <Compile Include="Assets\ScoreManager.cs" />
     <Compile Include="Assets\SpawnDirector.cs" />
+    <Compile Include="Assets\TransformMimic.cs" />
     <Compile Include="Assets\UIController.cs" />
     <Compile Include="Assets\UIManager.cs" />
     <Compile Include="Assets\UIScalingController.cs" />
+    <Compile Include="Assets\reactionVideos\ReactionScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\GoogleVR\Demos\Environment\DemoEnvUnlitGrayscale.shader" />
