@@ -37,6 +37,8 @@ public class PolicemanController : MonoBehaviour
 
     public Vector3 prevposition = Vector3.zero;
 
+    public Transform HEadBone = null;
+
     // Use this for initialization
     void Start()
     {
@@ -44,12 +46,12 @@ public class PolicemanController : MonoBehaviour
         {
             LookAt = true;
         }
-        else if(Random.value > 0.65f)
+        else if (Random.value > 0.65f)
         {
             Rest = true;
         }
 
-        if(Civil)
+        if (Civil)
         {
             MakeCivilian();
         }
@@ -85,31 +87,6 @@ public class PolicemanController : MonoBehaviour
         }
         else
         {
-            if (LookAt)
-            {
-                var r = LookAtStrength * Time.deltaTime;
-
-                bool rotateToTarget = false;
-
-                rotateToTarget = (EntController.Player.Head.position - Head.position).magnitude < LookAtDistance;
-
-                aaaa = Vector3.Angle(Head.forward, transform.forward);
-
-                if (aaaa > 110.0f)
-                {
-                    rotateToTarget = false;
-                }
-
-                if (rotateToTarget)
-                {
-                    RotateTo(Head, EntController.Player.Head.position, r);
-                }
-                else
-                {
-                    RotateTo(Head, Head.position + transform.forward, r);
-                }
-            }
-
             if (Rest)
             {
                 if ((EntController.Player.Head.position - Head.position).magnitude < RestDistance)
@@ -144,6 +121,36 @@ public class PolicemanController : MonoBehaviour
         prevposition = transform.position;
 
         Animator.SetFloat("Speed", speed);
+    }
+
+    private void LateUpdate()
+    {
+        if (LookAt)
+        {
+            var r = LookAtStrength * Time.deltaTime;
+
+            bool rotateToTarget = false;
+
+            rotateToTarget = (EntController.Player.Head.position - Head.position).magnitude < LookAtDistance;
+
+            aaaa = Vector3.Angle(Head.forward, transform.forward);
+
+            if (aaaa > 90.0f)
+            {
+                rotateToTarget = false;
+            }
+
+            if (rotateToTarget)
+            {
+                RotateTo(Head, EntController.Player.Head.position, r);
+            }
+            else
+            {
+                RotateTo(Head, Head.position + transform.forward, r);
+            }
+
+            HEadBone.rotation = Head.rotation;
+        }
     }
 
     public float GetAngle(Vector3 pos0, Vector3 pos1)
