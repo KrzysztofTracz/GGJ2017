@@ -96,12 +96,14 @@
     <Compile Include="Assets\ActorController.cs" />
     <Compile Include="Assets\ActorSpawner.cs" />
     <Compile Include="Assets\CameraController.cs" />
+    <Compile Include="Assets\CameraMimic.cs" />
     <Compile Include="Assets\CameraSync.cs" />
     <Compile Include="Assets\CameraVisible.cs" />
     <Compile Include="Assets\CommentsScript.cs" />
     <Compile Include="Assets\Cutscenka.cs" />
     <Compile Include="Assets\Ending.cs" />
     <Compile Include="Assets\EntController.cs" />
+    <Compile Include="Assets\EntCutsceneAnimator.cs" />
     <Compile Include="Assets\EntSocket.cs" />
     <Compile Include="Assets\FailIndicator.cs" />
     <Compile Include="Assets\GoogleVR\Demos\Scripts\DemoInputManager.cs" />
@@ -192,13 +194,18 @@
     <Compile Include="Assets\GoogleVR\Scripts\Utilities\GvrFPS.cs" />
     <Compile Include="Assets\GoogleVR\Scripts\Utilities\GvrIntent.cs" />
     <Compile Include="Assets\GoogleVR\Scripts\Video\GvrVideoPlayerTexture.cs" />
+    <Compile Include="Assets\Indykator.cs" />
+    <Compile Include="Assets\Indykators.cs" />
+    <Compile Include="Assets\Lajki.cs" />
     <Compile Include="Assets\MyNetworkManager.cs" />
     <Compile Include="Assets\MyNetworkPlayer.cs" />
     <Compile Include="Assets\NetworkObjectsSpawner.cs" />
+    <Compile Include="Assets\NieLajki.cs" />
     <Compile Include="Assets\ObjectRotator.cs" />
     <Compile Include="Assets\OfflineGame.cs" />
     <Compile Include="Assets\PlatformSpecific.cs" />
     <Compile Include="Assets\PolicemanController.cs" />
+    <Compile Include="Assets\PolicemanNEtworking.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Misc\HueCube.cs" />
@@ -208,9 +215,11 @@
     <Compile Include="Assets\RootManager.cs" />
     <Compile Include="Assets\ScoreManager.cs" />
     <Compile Include="Assets\SpawnDirector.cs" />
+    <Compile Include="Assets\TransformMimic.cs" />
     <Compile Include="Assets\UIController.cs" />
     <Compile Include="Assets\UIManager.cs" />
     <Compile Include="Assets\UIScalingController.cs" />
+    <Compile Include="Assets\reactionVideos\ReactionScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\GoogleVR\Demos\Environment\DemoEnvUnlitGrayscale.shader" />
