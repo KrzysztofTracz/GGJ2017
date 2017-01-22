@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: aab978c4fc57e77499be920cf519e134
-timeCreated: 1485031506
+guid: 1df3720ba3e6da543b1b1c80abcd4765
+timeCreated: 1485099733
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,8 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: SM_env_fountain
-    4300002: SM_env_fountain.001
+    4300000: Cube
   materials:
     importMaterials: 1
     materialName: 0
