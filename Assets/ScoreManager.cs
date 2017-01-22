@@ -67,6 +67,10 @@ public class ScoreManager : MonoBehaviour
 			FootExit ();
 		}
 
+		if (EntController.Player.RoundEnded) {
+			// 
+		}
+
 		// do not update values if round is over
 		if (EntController.Player.GameplayStopped) {
 			return; 

@@ -11,4 +11,8 @@ public class Ending : Cutscenka
             Application.LoadLevel(Application.loadedLevel);
         }
 	}
+	protected override void OnEnable() {
+		base.OnEnable ();
+		EntController.Player.RoundEnded = true;
+	}
 }
