@@ -54,7 +54,7 @@ public class ReactionScript : MonoBehaviour {
 
     double getFrequency(int currentViews)
     {
-        return (Mathf.Clamp01((float)currentViews / maxViews)) * (minReactionTime + maxReactionTime) - minReactionTime;
+        return (Mathf.Clamp01((float)currentViews / maxViews)) * maxReactionTime + minReactionTime;
     }
 	
 	// Update is called once per frame
