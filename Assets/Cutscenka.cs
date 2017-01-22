@@ -28,7 +28,11 @@ public class Cutscenka : MonoBehaviour {
         CameraController.Instance.enabled = false;
         EntController.Player.gameObject.SetActive(false);
 
-		EntController.Player.GameplayStopped = true;
+        Lajki.Instance.gameObject.SetActive(false);
+        NieLajki.Instance.gameObject.SetActive(false);
+        Indykators.Instance.gameObject.SetActive(false);
+        Indykators.Instance.Reset();
+        EntController.Player.GameplayStopped = true;
     }
 
     protected virtual void OnDisable()
@@ -42,6 +46,9 @@ public class Cutscenka : MonoBehaviour {
             CameraController.Instance.transform.localRotation = Quaternion.identity;
             CameraController.Instance.enabled = true;
             EntController.Player.gameObject.SetActive(true);
+            Lajki.Instance.gameObject.SetActive(true);
+            NieLajki.Instance.gameObject.SetActive(true);
+            Indykators.Instance.gameObject.SetActive(true);
         }
     }
 

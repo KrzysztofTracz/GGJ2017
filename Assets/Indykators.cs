@@ -14,4 +14,11 @@ public class Indykators : MonoBehaviour {
     {
         Instance = this;
     }
+
+    public void Reset()
+    {
+        Left.Reset();
+        Right.Reset();
+        Up.Reset();
+    }
 }
