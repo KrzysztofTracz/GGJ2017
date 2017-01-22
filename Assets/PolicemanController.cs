@@ -33,6 +33,10 @@ public class PolicemanController : MonoBehaviour
 
     public GameObject Hat = null;
 
+    public Animator Animator = null;
+
+    public Vector3 prevposition = Vector3.zero;
+
     // Use this for initialization
     void Start()
     {
@@ -49,6 +53,8 @@ public class PolicemanController : MonoBehaviour
         {
             MakeCivilian();
         }
+
+        prevposition = transform.position;
     }
 
     public void MakeCivilian()
@@ -75,62 +81,69 @@ public class PolicemanController : MonoBehaviour
                 Resting = false;
                 NavMeshAgent.destination = ActorController.Destination;
             }
-            return;
+            
         }
-
-        if (LookAt)
+        else
         {
-            var r = LookAtStrength * Time.deltaTime;
-
-            bool rotateToTarget = false;
-
-            rotateToTarget = (EntController.Player.Head.position - Head.position).magnitude < LookAtDistance;
-
-            aaaa = Vector3.Angle(Head.forward, transform.forward);
-
-            if (aaaa > 110.0f)
+            if (LookAt)
             {
-                rotateToTarget = false;
-            }
+                var r = LookAtStrength * Time.deltaTime;
 
-            if (rotateToTarget)
-            {
-                RotateTo(Head, EntController.Player.Head.position, r);
-            }
-            else
-            {
-                RotateTo(Head, Head.position + transform.forward, r);
-            }
-        }
+                bool rotateToTarget = false;
 
-        if(Rest)
-        {
-            if ((EntController.Player.Head.position - Head.position).magnitude < RestDistance)
-            {
-                if (Random.value > 0.5f)
+                rotateToTarget = (EntController.Player.Head.position - Head.position).magnitude < LookAtDistance;
+
+                aaaa = Vector3.Angle(Head.forward, transform.forward);
+
+                if (aaaa > 110.0f)
                 {
-                    Resting = true;
-                    Rest = false;
-                    RestTime = Random.Range(RestTimeMin, RestTimeMax);
-                    NavMeshAgent.destination = transform.position;
+                    rotateToTarget = false;
+                }
+
+                if (rotateToTarget)
+                {
+                    RotateTo(Head, EntController.Player.Head.position, r);
+                }
+                else
+                {
+                    RotateTo(Head, Head.position + transform.forward, r);
+                }
+            }
+
+            if (Rest)
+            {
+                if ((EntController.Player.Head.position - Head.position).magnitude < RestDistance)
+                {
+                    if (Random.value > 0.5f)
+                    {
+                        Resting = true;
+                        Rest = false;
+                        RestTime = Random.Range(RestTimeMin, RestTimeMax);
+                        NavMeshAgent.destination = transform.position;
+                    }
+                }
+            }
+
+            if (!Civil)
+            {
+                var dir = EntController.Player.Head.position - Head.position;
+                var angle = GetAngle(EntController.Player.Head.position, Head.position);
+
+                if (angle < FieldOfView)
+                {
+                    var hits = Physics.RaycastAll(Head.position, dir, dir.magnitude);
+                    if (hits.Length == 0)
+                    {
+                        EntController.Player.InSight(transform.position);
+                    }
                 }
             }
         }
 
-        if (!Civil)
-        {
-            var dir = EntController.Player.Head.position - Head.position;
-            var angle = GetAngle(EntController.Player.Head.position, Head.position);
+        var speed = (transform.position - prevposition).magnitude / Time.deltaTime;
+        prevposition = transform.position;
 
-            if (angle < FieldOfView)
-            {
-                var hits = Physics.RaycastAll(Head.position, dir, dir.magnitude);
-                if (hits.Length == 0)
-                {
-                    EntController.Player.InSight(transform.position);
-                }
-            }
-        }
+        Animator.SetFloat("Speed", speed);
     }
 
     public float GetAngle(Vector3 pos0, Vector3 pos1)
