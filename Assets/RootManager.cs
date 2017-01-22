@@ -12,7 +12,9 @@ public class RootManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (EntController.Player.RoundEnded) {
+			Start ();
+		}
 	}
 
 	public void StartRound() {		

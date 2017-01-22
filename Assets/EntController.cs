@@ -41,6 +41,7 @@ public class EntController : NetworkBehaviour {
 
     public int Busted = 0;
 	public bool GameplayStopped = false;
+	public bool RoundEnded = false;
 
     private void Awake()
     {
@@ -76,7 +77,7 @@ public class EntController : NetworkBehaviour {
 
         var dir = Fountain.position - Head.position;
         var angle = Vector3.Angle(Head.forward, dir);
-        if (angle < 30.0f)
+        if (angle < 45.0f)
         {
             IsVisibleInCamera = true;
         }

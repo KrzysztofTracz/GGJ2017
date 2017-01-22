@@ -67,6 +67,10 @@ public class ScoreManager : MonoBehaviour
 			FootExit ();
 		}
 
+		if (EntController.Player.RoundEnded) {
+			// 
+		}
+
 		// do not update values if round is over
 		if (EntController.Player.GameplayStopped) {
 			return; 
@@ -123,8 +127,16 @@ public class ScoreManager : MonoBehaviour
 			oneSecondTimer = 0;
 		}
 
+        if(newLikes > 0)
+        {
+            Lajki.Instance.Napierdalaj();
+        }
 
-	}
+        if (newDislikes > 0)
+        {
+            NieLajki.Instanceeee.Napierdalaj();
+        }
+    }
 
 	// called when entering fountain
 	// start counting time
