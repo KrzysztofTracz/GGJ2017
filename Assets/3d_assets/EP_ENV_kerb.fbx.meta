@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: aab978c4fc57e77499be920cf519e134
-timeCreated: 1485031506
+guid: e40228bad0d1b2c4c8914c583b84f873
+timeCreated: 1485094694
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,8 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: SM_env_fountain
-    4300002: SM_env_fountain.001
+    4300000: Plane.001
   materials:
     importMaterials: 1
     materialName: 0
