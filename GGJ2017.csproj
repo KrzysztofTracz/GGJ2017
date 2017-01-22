@@ -96,6 +96,7 @@
     <Compile Include="Assets\ActorController.cs" />
     <Compile Include="Assets\ActorSpawner.cs" />
     <Compile Include="Assets\CameraController.cs" />
+    <Compile Include="Assets\CameraMimic.cs" />
     <Compile Include="Assets\CameraSync.cs" />
     <Compile Include="Assets\CameraVisible.cs" />
     <Compile Include="Assets\CommentsScript.cs" />
@@ -193,6 +194,8 @@
     <Compile Include="Assets\GoogleVR\Scripts\Utilities\GvrFPS.cs" />
     <Compile Include="Assets\GoogleVR\Scripts\Utilities\GvrIntent.cs" />
     <Compile Include="Assets\GoogleVR\Scripts\Video\GvrVideoPlayerTexture.cs" />
+    <Compile Include="Assets\Indykator.cs" />
+    <Compile Include="Assets\Indykators.cs" />
     <Compile Include="Assets\MyNetworkManager.cs" />
     <Compile Include="Assets\MyNetworkPlayer.cs" />
     <Compile Include="Assets\NetworkObjectsSpawner.cs" />

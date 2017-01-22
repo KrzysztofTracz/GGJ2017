@@ -127,7 +127,7 @@ public class PolicemanController : MonoBehaviour
                 var hits = Physics.RaycastAll(Head.position, dir, dir.magnitude);
                 if (hits.Length == 0)
                 {
-                    EntController.Player.InSight();
+                    EntController.Player.InSight(transform.position);
                 }
             }
         }
