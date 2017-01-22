@@ -60,6 +60,10 @@ public class ScoreManager : MonoBehaviour
             return;
         }
 
+		if (Input.GetKey ("z")) {
+			EntController.Player.RoundEnded = true;
+		}
+
         if (footInWater == false && EntController.Player.PrankActive) {
 			FootEnter ();
 		}

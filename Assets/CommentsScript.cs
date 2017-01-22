@@ -16,6 +16,8 @@ public class CommentsScript : MonoBehaviour {
     public double maxFrequency = 3;
     public int maxSubs = 20000;
 
+    public float minSpeed = 0.5f;
+
     private float frequency;
     private GameObject lastMessage;
     private List<GameObject> loweringMessages;
@@ -96,7 +98,7 @@ public class CommentsScript : MonoBehaviour {
 
     void countFrequency()
     {
-        frequency = Mathf.Clamp(((float)subsCount / maxSubs), 0, (float)maxFrequency);
+        frequency = Mathf.Clamp(((float)subsCount / maxSubs), minSpeed, (float)maxFrequency);
     }
 
     // Update is called once per frame
