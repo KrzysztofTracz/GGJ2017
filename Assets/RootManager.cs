@@ -21,7 +21,7 @@ public class RootManager : MonoBehaviour {
 		catch {
 			Debug.Log ("failed to unload scene");
 		}
-		if(ui == null) ui = GameObject.Find ("UI 1 root");			
+		if(ui == null) ui = GameObject.Find ("UI 1");			
 		if(startButton == null) 	startButton = GameObject.Find ("StartButton");
 		ui.SetActive(true);
 		startButton.SetActive(true);
@@ -37,7 +37,7 @@ public class RootManager : MonoBehaviour {
 	}
 
 	public void StartRound() {		
-		GameObject.Find ("UI 1 root").SetActive(false);
+		GameObject.Find ("UI 1").SetActive(false);
 		SceneManager.LoadScene ("scene0", LoadSceneMode.Additive);
         SceneManager.LoadScene("scene0_asset_test", LoadSceneMode.Additive);
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("scene0"));
