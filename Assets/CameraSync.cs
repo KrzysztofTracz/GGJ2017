@@ -3,12 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class CameraSync : NetworkBehaviour {
+public class CameraSync : NetworkBehaviour
+{
+#if UNITY_ANDROID
+    [SyncVar(hook = "OnRotationChanged")]
+#endif
+    public Quaternion rotation = Quaternion.identity;
 
-	// Use this for initialization
-	void Start ()
+#if UNITY_ANDROID
+    [SyncVar(hook = "OnPositionChanged")]
+#endif
+    public Vector3 position = Vector3.zero;
+
+    // Use this for initialization
+    void Start ()
     {
-        if(OfflineGame.Instance.isActiveAndEnabled)
+        if(OfflineGame.Instance != null && OfflineGame.Instance.isActiveAndEnabled)
         {
             AttachMeTo(CameraController.Instance.transform);
             CameraController.Instance.isServer = true;
@@ -27,8 +37,14 @@ public class CameraSync : NetworkBehaviour {
             }
         }
 	}
-	
-	void AttachMeTo(Transform t)
+
+    private void LateUpdate()
+    {
+        rotation = transform.rotation;
+        position = transform.position;
+    }
+
+    void AttachMeTo(Transform t)
     {
         transform.SetParent(t);
         transform.localPosition = Vector3.zero;
@@ -42,5 +58,15 @@ public class CameraSync : NetworkBehaviour {
         t.localPosition = Vector3.zero;
         t.localRotation = Quaternion.identity;
         t.localScale = Vector3.one;
+    }
+
+    public void OnRotationChanged(Quaternion value)
+    {
+        transform.rotation = value;
+    }
+
+    public void OnPositionChanged(Vector3 value)
+    {
+        transform.position = value;
     }
 }

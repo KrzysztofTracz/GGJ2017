@@ -200,6 +200,7 @@
     <Compile Include="Assets\OfflineGame.cs" />
     <Compile Include="Assets\PlatformSpecific.cs" />
     <Compile Include="Assets\PolicemanController.cs" />
+    <Compile Include="Assets\PolicemanNEtworking.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Misc\HueCube.cs" />

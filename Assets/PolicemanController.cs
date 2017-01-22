@@ -27,6 +27,7 @@ public class PolicemanController : MonoBehaviour
 
     public NavMeshAgent NavMeshAgent = null;
     public ActorController ActorController = null;
+    public PolicemanNEtworking PolicemanNEtworking = null;
 
     public bool Civil = false;
 
@@ -46,8 +47,13 @@ public class PolicemanController : MonoBehaviour
 
         if(Civil)
         {
-            Hat.SetActive(false);
+            MakeCivilian();
         }
+    }
+
+    public void MakeCivilian()
+    {
+        Hat.SetActive(false);
     }
 
     // Update is called once per frame
@@ -56,7 +62,12 @@ public class PolicemanController : MonoBehaviour
         if (EntController.Player == null) return;
         if (EntController.Player.Head == null) return;
 
-        if(Resting)
+        if(OfflineGame.Instance == null)
+        {
+            if (!PolicemanNEtworking.isServer) return;
+        }        
+
+        if (Resting)
         {
             RestTime -= Time.deltaTime;
             if(RestTime <= 0.0f)
