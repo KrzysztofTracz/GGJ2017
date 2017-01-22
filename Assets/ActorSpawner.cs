@@ -40,11 +40,18 @@ public class ActorSpawner : MonoBehaviour
     {
         var obj = GameObject.Instantiate(PolicemanPrefab, transform.position, transform.rotation);
 
-        if(Random.value < SpawnCivilChance)
+        if(OfflineGame.Instance == null)
+        {
+            NetworkObjectsSpawner.Instance.Spawn(obj);
+        }        
+
+        if (Random.value < SpawnCivilChance)
         {
             var policemanController = obj.GetComponent<PolicemanController>();
             policemanController.Civil = true;
-        }
+
+            obj.GetComponent<PolicemanNEtworking>().IsCivilian = true;
+        }        
 
         var agent = obj.GetComponent<ActorController>();
         agent.SetDestination(Targets[Random.Range(0, Targets.Count)].position);

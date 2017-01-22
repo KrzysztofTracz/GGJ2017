@@ -1,16 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class RootManager : UnityEngine.SceneManagement.SceneManager {
+public class RootManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		GameObject.Find ("StartButton").SetActive(true);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void StartRound() {		
+		GameObject.Find ("UI").SetActive(false);
+		SceneManager.LoadScene ("scene0", LoadSceneMode.Additive);
+		SceneManager.SetActiveScene(SceneManager.GetSceneByName("scene0"));
 	}
 }

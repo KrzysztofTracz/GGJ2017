@@ -30,9 +30,6 @@ public class EntController : NetworkBehaviour {
 
     public bool IsVisibleInCamera = false;
 
-#if UNITY_ANDROID
-    [SyncVar]
-#endif
     public bool IsFailing = false;
 
 	public bool IsBeingSpotted;
@@ -121,11 +118,17 @@ public class EntController : NetworkBehaviour {
             if(Busted >= 3)
             {
                 CameraController.Instance.BadEnding.gameObject.SetActive(true);
-            }    
+#if UNITY_ANDROID
+                RpcBadEndinga();
+#endif
+            }
             else
             {
                 CameraController.Instance.Cutscenka.gameObject.SetActive(true);
-            }        
+#if UNITY_ANDROID
+                RpcCutscenka();
+#endif
+            }
         }
         
 		IsBeingSpotted = false; // reset for the next frame
@@ -159,5 +162,17 @@ public class EntController : NetworkBehaviour {
             //LegActive.SetActive(false);
             //LegInactive.SetActive(true);
         }
+    }
+
+    [ClientRpc]
+    public void RpcCutscenka()
+    {
+        CameraController.Instance.Cutscenka.gameObject.SetActive(true);
+    }
+
+    [ClientRpc]
+    public void RpcBadEndinga()
+    {
+        CameraController.Instance.BadEnding.gameObject.SetActive(true);
     }
 }
