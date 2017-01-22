@@ -41,6 +41,7 @@ public class EntController : NetworkBehaviour {
 
     public int Busted = 0;
 	public bool GameplayStopped = false;
+	public bool RoundEnded = false;
 
     private void Awake()
     {
@@ -76,7 +77,7 @@ public class EntController : NetworkBehaviour {
 
         var dir = Fountain.position - Head.position;
         var angle = Vector3.Angle(Head.forward, dir);
-        if (angle < 30.0f)
+        if (angle < 45.0f)
         {
             IsVisibleInCamera = true;
         }
@@ -97,12 +98,12 @@ public class EntController : NetworkBehaviour {
 
         if (IsFailing)
         {
-            UIController.Instance.Fail.SetActive(true);
+            //UIController.Instance.Fail.SetActive(true);
             IsFailing = false;
         }
         else
         {
-            UIController.Instance.Fail.SetActive(false);
+            //UIController.Instance.Fail.SetActive(false);
         }
 
         if (Failometer < 0)
@@ -134,10 +135,27 @@ public class EntController : NetworkBehaviour {
 		IsBeingSpotted = false; // reset for the next frame
     }
 
-    public void InSight()
+    public void InSight(Vector3 position)
     {
 		IsBeingSpotted = true;
-		if (PrankActive) Fail();
+        if (PrankActive)
+        {
+            var a = Vector3.Angle(Head.right, position - Head.position);
+
+            if(a < 60.0f)
+            {
+                Indykators.Instance.Right.Show();
+            }
+            else if(a < 120.0f)
+            {
+                Indykators.Instance.Up.Show();
+            }
+            else
+            {
+                Indykators.Instance.Left.Show();
+            }
+            Fail();
+        }
     }
 
     public void Fail()

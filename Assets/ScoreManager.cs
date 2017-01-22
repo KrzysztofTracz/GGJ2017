@@ -60,11 +60,19 @@ public class ScoreManager : MonoBehaviour
             return;
         }
 
+		if (Input.GetKey ("z")) {
+			EntController.Player.RoundEnded = true;
+		}
+
         if (footInWater == false && EntController.Player.PrankActive) {
 			FootEnter ();
 		}
 		if (footInWater && EntController.Player.PrankActive == false) {
 			FootExit ();
+		}
+
+		if (EntController.Player.RoundEnded) {
+			// 
 		}
 
 		// do not update values if round is over
@@ -123,8 +131,16 @@ public class ScoreManager : MonoBehaviour
 			oneSecondTimer = 0;
 		}
 
+        if(newLikes > 0)
+        {
+            Lajki.Instance.Napierdalaj();
+        }
 
-	}
+        if (newDislikes > 0)
+        {
+            NieLajki.Instanceeee.Napierdalaj();
+        }
+    }
 
 	// called when entering fountain
 	// start counting time
