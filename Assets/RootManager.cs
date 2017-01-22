@@ -40,6 +40,7 @@ public class RootManager : MonoBehaviour {
 		GameObject.Find ("UI 1 root").SetActive(false);
 		SceneManager.LoadScene ("scene0", LoadSceneMode.Additive);
 		SceneManager.SetActiveScene(SceneManager.GetSceneByName("scene0"));
+		GameObject.Find ("IntroMusicLoop").GetComponent<AudioSource> ().Pause ();
 	}
 }
 	

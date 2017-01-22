@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
 	float logClearTimer;
 	// Use this for initialization
 	void Start ()
-	{
+	{		
 		scoreManager = GameObject.Find ("ScoreManager").GetComponent<ScoreManager>();
 		viewsField = GameObject.Find ("ViewsField").GetComponent<Text> ();
 		likesField = GameObject.Find ("LikesField").GetComponent<Text> ();
@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
 		log = GameObject.Find ("Log").GetComponent<Text> ();
 		subsField = GameObject.Find ("SubsField").GetComponent<Text> ();
 		timeField = GameObject.Find ("TimeField").GetComponent<Text> ();
+		GameObject.Find ("StartButton").SetActive (false);
 	}
 
 	// Update is called once per frame

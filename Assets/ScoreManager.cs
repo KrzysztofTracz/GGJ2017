@@ -24,9 +24,12 @@ public class ScoreManager : MonoBehaviour
 	public float scoreMultiplier;
 	public float oneSecondTimer = 0;
 
+	public SoundEmitter soundEmitter;
+
 	// Use this for initialization
 	void Start ()
 	{
+		soundEmitter = GameObject.Find ("SoundEmitter").GetComponent<SoundEmitter> ();
 		footInWater = false;
 //		latestDurationInWater = 0;
 
@@ -145,7 +148,8 @@ public class ScoreManager : MonoBehaviour
 	// called when entering fountain
 	// start counting time
 	public void FootEnter ()
-	{
+	{		
+		soundEmitter.Play(soundEmitter.foot_in_water);
 		footInWater = true;
 		currentFail = false;
 		enterTime = Time.realtimeSinceStartup;
@@ -154,6 +158,8 @@ public class ScoreManager : MonoBehaviour
 	// called when leaving fountain
 	public void FootExit ()
 	{	
+		soundEmitter.Play(soundEmitter.foot_outa_water);
+		
 		if (currentFail == false && EntController.Player.IsVisibleInCamera) {
 			scoreMultiplier += 1;
 		}

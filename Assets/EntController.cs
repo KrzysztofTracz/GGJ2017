@@ -43,6 +43,8 @@ public class EntController : NetworkBehaviour {
 	public bool GameplayStopped = false;
 	public bool RoundEnded = false;
 
+	public SoundEmitter soundEmitter;
+
     private void Awake()
     {
         Player = this;
@@ -62,6 +64,8 @@ public class EntController : NetworkBehaviour {
         Fountain = GameObject.Find("Fountain Target").transform;
 
         Animator.SetBool("FootUp", true);
+
+		soundEmitter = GameObject.Find ("SoundEmitter").GetComponent<SoundEmitter> ();
     }
 	
     private void Update()
@@ -112,12 +116,14 @@ public class EntController : NetworkBehaviour {
         }
         else if(Failometer >= FailometerLimit)
         {
+			soundEmitter.Play2 (soundEmitter.police_whistle);
             Failometer = 0.0f;
             UIController.Instance.Fail.SetActive(false);
             Busted++;
 
             if(Busted >= 3)
             {
+				soundEmitter.Play (soundEmitter.outro_loose);
                 CameraController.Instance.BadEnding.gameObject.SetActive(true);
 #if UNITY_ANDROID
                 RpcBadEndinga();
@@ -125,6 +131,7 @@ public class EntController : NetworkBehaviour {
             }
             else
             {
+				soundEmitter.Play (soundEmitter.outro_win);
                 CameraController.Instance.Cutscenka.gameObject.SetActive(true);
 #if UNITY_ANDROID
                 RpcCutscenka();
