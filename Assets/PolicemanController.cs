@@ -133,6 +133,8 @@ public class PolicemanController : MonoBehaviour
         prevposition = transform.position;
 
         Animator.SetFloat("Speed", speed);
+
+        PolicemanNEtworking.Speed = speed;
     }
 
     private void LateUpdate()

@@ -20,6 +20,7 @@ public class RootManager : MonoBehaviour {
 	public void StartRound() {		
 		GameObject.Find ("UI").SetActive(false);
 		SceneManager.LoadScene ("scene0", LoadSceneMode.Additive);
-		SceneManager.SetActiveScene(SceneManager.GetSceneByName("scene0"));
+        SceneManager.LoadScene("scene0_asset_test", LoadSceneMode.Additive);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("scene0"));
 	}
 }
