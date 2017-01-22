@@ -28,4 +28,10 @@ public class Indykator : MonoBehaviour {
         }
         _lock = false;
 	}
+
+    public void Reset()
+    {
+        ShowTime = 0.0f;
+        gameObject.SetActive(false);
+    }
 }

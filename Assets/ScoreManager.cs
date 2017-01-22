@@ -127,8 +127,16 @@ public class ScoreManager : MonoBehaviour
 			oneSecondTimer = 0;
 		}
 
+        if(newLikes > 0)
+        {
+            Lajki.Instance.Napierdalaj();
+        }
 
-	}
+        if (newDislikes > 0)
+        {
+            NieLajki.Instanceeee.Napierdalaj();
+        }
+    }
 
 	// called when entering fountain
 	// start counting time

@@ -196,9 +196,11 @@
     <Compile Include="Assets\GoogleVR\Scripts\Video\GvrVideoPlayerTexture.cs" />
     <Compile Include="Assets\Indykator.cs" />
     <Compile Include="Assets\Indykators.cs" />
+    <Compile Include="Assets\Lajki.cs" />
     <Compile Include="Assets\MyNetworkManager.cs" />
     <Compile Include="Assets\MyNetworkPlayer.cs" />
     <Compile Include="Assets\NetworkObjectsSpawner.cs" />
+    <Compile Include="Assets\NieLajki.cs" />
     <Compile Include="Assets\ObjectRotator.cs" />
     <Compile Include="Assets\OfflineGame.cs" />
     <Compile Include="Assets\PlatformSpecific.cs" />
