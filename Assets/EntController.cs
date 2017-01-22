@@ -30,9 +30,6 @@ public class EntController : NetworkBehaviour {
 
     public bool IsVisibleInCamera = false;
 
-#if UNITY_ANDROID
-    [SyncVar]
-#endif
     public bool IsFailing = false;
 
 	public bool IsBeingSpotted;
@@ -101,12 +98,12 @@ public class EntController : NetworkBehaviour {
 
         if (IsFailing)
         {
-            UIController.Instance.Fail.SetActive(true);
+            //UIController.Instance.Fail.SetActive(true);
             IsFailing = false;
         }
         else
         {
-            UIController.Instance.Fail.SetActive(false);
+            //UIController.Instance.Fail.SetActive(false);
         }
 
         if (Failometer < 0)
@@ -122,20 +119,43 @@ public class EntController : NetworkBehaviour {
             if(Busted >= 3)
             {
                 CameraController.Instance.BadEnding.gameObject.SetActive(true);
-            }    
+#if UNITY_ANDROID
+                RpcBadEndinga();
+#endif
+            }
             else
             {
                 CameraController.Instance.Cutscenka.gameObject.SetActive(true);
-            }        
+#if UNITY_ANDROID
+                RpcCutscenka();
+#endif
+            }
         }
         
 		IsBeingSpotted = false; // reset for the next frame
     }
 
-    public void InSight()
+    public void InSight(Vector3 position)
     {
 		IsBeingSpotted = true;
-		if (PrankActive) Fail();
+        if (PrankActive)
+        {
+            var a = Vector3.Angle(Head.right, position - Head.position);
+
+            if(a < 60.0f)
+            {
+                Indykators.Instance.Right.Show();
+            }
+            else if(a < 120.0f)
+            {
+                Indykators.Instance.Up.Show();
+            }
+            else
+            {
+                Indykators.Instance.Left.Show();
+            }
+            Fail();
+        }
     }
 
     public void Fail()
@@ -160,5 +180,17 @@ public class EntController : NetworkBehaviour {
             //LegActive.SetActive(false);
             //LegInactive.SetActive(true);
         }
+    }
+
+    [ClientRpc]
+    public void RpcCutscenka()
+    {
+        CameraController.Instance.Cutscenka.gameObject.SetActive(true);
+    }
+
+    [ClientRpc]
+    public void RpcBadEndinga()
+    {
+        CameraController.Instance.BadEnding.gameObject.SetActive(true);
     }
 }

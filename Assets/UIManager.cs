@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
 		viewsField.text = Mathf.CeilToInt (scoreManager.views).ToString ();
 		likesField.text = Mathf.CeilToInt (scoreManager.likes).ToString ();
 		dislikesField.text = Mathf.CeilToInt (scoreManager.dislikes).ToString ();
-		subsField.text = "x" + Mathf.CeilToInt (scoreManager.subs).ToString ();
+		subsField.text = Mathf.CeilToInt (scoreManager.subs).ToString ();
 
 		Slider slider = GameObject.Find ("Slider").GetComponent<Slider>();
 		slider.value = scoreManager.currentRoundDuration / scoreManager.maxDuration;

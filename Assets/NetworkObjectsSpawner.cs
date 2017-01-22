@@ -6,11 +6,18 @@ using UnityEngine.Networking;
 public class NetworkObjectsSpawner : NetworkBehaviour
 {
 
+    public static NetworkObjectsSpawner Instance = null;
+
     public List<Transform> Sockets = new List<Transform>();
     public List<GameObject> Objects = new List<GameObject>();
     public List<bool> WithClientAuthority = new List<bool>();
 
     public NetworkConnection Client = null;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Use this for initialization
     void Start()
@@ -22,6 +29,11 @@ public class NetworkObjectsSpawner : NetworkBehaviour
     void Update()
     {
 
+    }
+
+    public void Spawn(GameObject gameObject)
+    {
+        NetworkServer.Spawn(gameObject);
     }
 
     public void Spawn()

@@ -54,9 +54,13 @@ public class ScoreManager : MonoBehaviour
 
 	// Update is called once per frame
 	void LateUpdate ()
-	{		
+	{
+        if (EntController.Player == null)
+        {
+            return;
+        }
 
-		if(footInWater == false && EntController.Player.PrankActive) {
+        if (footInWater == false && EntController.Player.PrankActive) {
 			FootEnter ();
 		}
 		if (footInWater && EntController.Player.PrankActive == false) {
