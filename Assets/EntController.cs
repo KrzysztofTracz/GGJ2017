@@ -44,6 +44,7 @@ public class EntController : NetworkBehaviour {
 
     public int Busted = 0;
 	public bool GameplayStopped = false;
+	public bool RoundEnded = false;
 
     private void Awake()
     {
