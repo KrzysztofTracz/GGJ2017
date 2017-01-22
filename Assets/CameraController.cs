@@ -39,6 +39,12 @@ public class CameraController : MonoBehaviour
             rotationY += RotationMovement * Input.GetAxis("Mouse X");
             rotationX -= RotationMovement * Input.GetAxis("Mouse Y");
 
+            if (rotationX >  70.0f) rotationX =  70.0f;
+            if (rotationX < -70.0f) rotationX = -70.0f;
+
+            if (rotationY > 145.0f) rotationY = 145.0f;
+            if (rotationY < -145.0f) rotationY = -145.0f;
+
             transform.rotation = Quaternion.Euler(baseRotation + new Vector3(rotationX, rotationY, 0.0f));
         }
     }
