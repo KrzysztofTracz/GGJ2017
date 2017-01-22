@@ -5,3 +5,6 @@ obj/
 ggj2017.exe
 ggj2017.apk
 .vs/GGJ2017/v14/.suo
+Assembly-CSharp.csproj
+Assembly-CSharp-Editor.csproj
+GGJ2017.userprefs

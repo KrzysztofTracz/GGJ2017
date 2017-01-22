@@ -55,4 +55,8 @@ public class UIManager : MonoBehaviour
 		logClearTimer += Time.deltaTime;
 			
 	}
+
+	public void StartRound() {
+		EntController.Player.RoundEnded = true;
+	}
 }

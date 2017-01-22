@@ -120,7 +120,10 @@ public class PolicemanController : MonoBehaviour
                     var hits = Physics.RaycastAll(Head.position, dir, dir.magnitude);
                     if (hits.Length == 0)
                     {
-                        EntController.Player.InSight(transform.position);
+                        if(dir.magnitude < 10.0f)
+                        {
+                            EntController.Player.InSight(transform.position);
+                        }
                     }
                 }
             }
