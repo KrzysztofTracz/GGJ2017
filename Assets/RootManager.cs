@@ -13,6 +13,7 @@ public class RootManager : MonoBehaviour {
     public GameObject mainCamera = null;
 
     public ReactionScript ReactionScript = null;
+    public CommentsScript CommentsScript = null;
 
     public static RootManager Instance = null;
 
@@ -62,6 +63,7 @@ public class RootManager : MonoBehaviour {
         ent.SetActive(false);
         mainCamera.SetActive(false);
         ReactionScript.enabled = true;
+        CommentsScript.enabled = true;
     }
 }
 	

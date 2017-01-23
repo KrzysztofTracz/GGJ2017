@@ -3,7 +3,9 @@ using System.Collections;
 
 public class ScoreManager : MonoBehaviour
 {
-	public float viewsExponentScale = 0.02f;
+    public static ScoreManager Instance = null;
+
+    public float viewsExponentScale = 0.02f;
 	public float likesExponentScale = 0.02f;
 	public float difficultyScale= 0.01f;
 	public float difficultyIncrementPerSecond = 0.01f;
@@ -25,6 +27,11 @@ public class ScoreManager : MonoBehaviour
 	public float oneSecondTimer = 0;
 
 	public SoundEmitter soundEmitter;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
 	// Use this for initialization
 	void Start ()
