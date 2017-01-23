@@ -68,6 +68,16 @@ public class EntController : NetworkBehaviour {
 		soundEmitter = GameObject.Find ("SoundEmitter").GetComponent<SoundEmitter> ();
     }
 	
+    public void End()
+    {
+        soundEmitter.Play(soundEmitter.outro_loose);
+        CameraController.Instance.BadEnding.gameObject.SetActive(true);
+#if UNITY_ANDROID
+                RpcBadEndinga();
+#endif
+        GameObject.Find("IntroMusicLoop").GetComponent<AudioSource>().Pause();
+    }
+
     private void Update()
     {
 
@@ -123,12 +133,7 @@ public class EntController : NetworkBehaviour {
 
             if(Busted >= 3)
             {
-				soundEmitter.Play (soundEmitter.outro_loose);
-                CameraController.Instance.BadEnding.gameObject.SetActive(true);
-#if UNITY_ANDROID
-                RpcBadEndinga();
-#endif
-				GameObject.Find ("IntroMusicLoop").GetComponent<AudioSource> ().Pause ();
+                End();
             }
             else
             {

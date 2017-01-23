@@ -16,7 +16,7 @@ public class SaveData
 
 public class Ending : Cutscenka
 {
-    float delay = 5.0f;
+    float delay = 10.0f;
 
 	protected override void Update ()
     {

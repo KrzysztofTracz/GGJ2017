@@ -163,6 +163,11 @@ public class ScoreManager : MonoBehaviour
         {
             NieLajki.Instanceeee.Napierdalaj();
         }
+
+        if(currentRoundDuration >= maxDuration)
+        {
+            EntController.Player.End();
+        }
     }
 
 	// called when entering fountain

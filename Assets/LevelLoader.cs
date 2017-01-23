@@ -24,8 +24,8 @@ public class LevelLoader : MonoBehaviour {
             var data = bf.Deserialize(file) as SaveData;
             Views.text = Mathf.CeilToInt(data.views).ToString();
             Likes.text = Mathf.CeilToInt(data.likes).ToString();
-            Dislikes.text = Mathf.CeilToInt(data.subs).ToString();
-            Subs.text = Mathf.CeilToInt(data.dislikes).ToString();
+            Dislikes.text = Mathf.CeilToInt(data.dislikes).ToString();
+            Subs.text = Mathf.CeilToInt(data.subs).ToString();
         }
         catch
         {

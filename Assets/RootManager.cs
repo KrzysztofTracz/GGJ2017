@@ -24,7 +24,7 @@ public class RootManager : MonoBehaviour {
 
     void Start () {
 
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
         //		try {
