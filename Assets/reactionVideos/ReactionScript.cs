@@ -22,6 +22,8 @@ public class ReactionScript : MonoBehaviour {
 
     private int viewCount;
 
+    private float delay = 15.0f;
+
     private double frequency = 0.0005;
     MovieTexture randomizeTexture()
     {
@@ -59,6 +61,17 @@ public class ReactionScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        delay -= Time.deltaTime;
+        if(delay >= 0)
+        {
+            return;
+        }
+        else
+        {
+            delay = 0.0f;
+        }
+
         bool test = int.TryParse(viewsField.GetComponent<Text>().text, out viewCount);
         if(test)
         {

@@ -7,8 +7,14 @@ public class RootManager : MonoBehaviour {
 
 	GameObject ui;
 	GameObject startButton;
-	// Use this for initialization
-	void Start () {		
+    // Use this for initialization
+
+    public GameObject ent = null;
+    public GameObject mainCamera = null;
+
+    public ReactionScript ReactionScript = null;
+
+    void Start () {		
 //		try {
 //			SceneManager.LoadScene ("scene0_asset_test", LoadSceneMode.Additive);
 //		}
@@ -38,9 +44,13 @@ public class RootManager : MonoBehaviour {
 
 	public void StartRound() {		
 		GameObject.Find ("UI 1").SetActive(false);
-		SceneManager.LoadScene("scene0_asset_test", LoadSceneMode.Additive);
+		
 		SceneManager.LoadScene ("scene0", LoadSceneMode.Additive);        
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("scene0"));
-	}
+
+        ent.SetActive(false);
+        mainCamera.SetActive(false);
+        ReactionScript.enabled = true;
+    }
 }
 	

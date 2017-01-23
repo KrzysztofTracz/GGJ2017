@@ -43,16 +43,16 @@ public class ScoreManager : MonoBehaviour
 
 		float s = 0;
 
-		if (views > 10)
+		if (likes > 10)
 			range = 5;
-		else if (views > 100)
+		else if (likes > 100)
 			range = 50;
-		else if (views > 1000) 
+		else if (likes > 1000) 
 			range = 500;
 
-		range = Mathf.Min (views, range);
+		range = Mathf.Min (likes, range);
 
-		return Mathf.Min( views, scoreMultiplier * 100 + UnityEngine.Random.Range (range, -range));
+		return Mathf.Min(likes, (scoreMultiplier * 100 + UnityEngine.Random.Range (range, -range)) / 10);
 	}
 
 	// Update is called once per frame
@@ -107,7 +107,10 @@ public class ScoreManager : MonoBehaviour
 				if (oneSecondTimer > 1) {			
 					subs = GenerateSubs ();
 				}
-			} 
+
+                //newDislikes += Random.Range(0, 100f) / 100 * difficultyScale;
+            } 
+
 			if (EntController.Player.IsVisibleInCamera) {
 				currentDurationInWater += Time.deltaTime;
 				newViews = scoreMultiplier * (Mathf.Exp (viewsExponentScale * currentDurationInWater) - 1);
@@ -116,18 +119,23 @@ public class ScoreManager : MonoBehaviour
 					views += newViews;
 					likes += newLikes;
 				}
-
-
 			}
-			newDislikes = (Mathf.Exp(difficultyScale * currentRoundDuration) - 1);
-			if(EntController.Player.IsBeingSpotted) {				
-				newDislikes += Random.Range(0, 100f)/100 * difficultyScale;
-			} 
+            else
+            {
+                newDislikes = (Mathf.Exp(difficultyScale * currentRoundDuration) - 1);
+            }			
 
 			dislikes += newDislikes;
 			views += newDislikes;
 
 		}
+        else
+        {
+            newDislikes = (Mathf.Exp((difficultyScale/1000.0f) * currentRoundDuration) - 1);
+            dislikes += newDislikes;
+            views += newDislikes;
+        }
+
 		views += Time.deltaTime * Random.Range(0,100)/100;
 
 		if (oneSecondTimer > 1) {

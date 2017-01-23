@@ -197,6 +197,7 @@
     <Compile Include="Assets\Indykator.cs" />
     <Compile Include="Assets\Indykators.cs" />
     <Compile Include="Assets\Lajki.cs" />
+    <Compile Include="Assets\LevelLoader.cs" />
     <Compile Include="Assets\MyNetworkManager.cs" />
     <Compile Include="Assets\MyNetworkPlayer.cs" />
     <Compile Include="Assets\NetworkObjectsSpawner.cs" />
@@ -214,11 +215,13 @@
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Vertex Colors\HighlightNearestFace.cs" />
     <Compile Include="Assets\RootManager.cs" />
     <Compile Include="Assets\ScoreManager.cs" />
+    <Compile Include="Assets\SoundEmitter.cs" />
     <Compile Include="Assets\SpawnDirector.cs" />
     <Compile Include="Assets\TransformMimic.cs" />
     <Compile Include="Assets\UIController.cs" />
     <Compile Include="Assets\UIManager.cs" />
     <Compile Include="Assets\UIScalingController.cs" />
+    <Compile Include="Assets\reactionVideos\ReactionScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\GoogleVR\Demos\Environment\DemoEnvUnlitGrayscale.shader" />
