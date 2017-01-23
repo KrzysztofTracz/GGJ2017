@@ -36,7 +36,7 @@ public class SpawnDirector : MonoBehaviour {
         var spawnDelayMax = SpawnDelayMax.Evaluate(currentTime);
         var spawnCivil = SpawnCivil.Evaluate(currentTime);
 
-        for (int i=0;((float)i)<activeSpawners;i++)
+        for (int i=0;((float)i)<activeSpawners && i < Spawners.Count; i++)
         {
             if(!Spawners[i].gameObject.activeSelf)
             {

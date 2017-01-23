@@ -55,6 +55,11 @@ public class ScoreManager : MonoBehaviour
 		return Mathf.Min(likes, (scoreMultiplier * 100 + UnityEngine.Random.Range (range, -range)) / 10);
 	}
 
+    private float Limit(float value)
+    {
+        return (value > 1000.0f ? 1000.0f : value);
+    }
+
 	// Update is called once per frame
 	void LateUpdate ()
 	{
@@ -116,8 +121,8 @@ public class ScoreManager : MonoBehaviour
 				newViews = scoreMultiplier * (Mathf.Exp (viewsExponentScale * currentDurationInWater) - 1);
 				newLikes = scoreMultiplier * (Mathf.Exp (likesExponentScale * currentDurationInWater) - 1);
 				if (currentFail == false) {
-					views += newViews;
-					likes += newLikes;
+					views += Limit(newViews);
+					likes += Limit(newLikes);
 				}
 			}
             else
@@ -125,15 +130,15 @@ public class ScoreManager : MonoBehaviour
                 newDislikes = (Mathf.Exp(difficultyScale * currentRoundDuration) - 1);
             }			
 
-			dislikes += newDislikes;
-			views += newDislikes;
+			dislikes += Limit(newDislikes);
+			views += Limit(newDislikes);
 
-		}
+        }
         else
         {
             newDislikes = (Mathf.Exp((difficultyScale/1000.0f) * currentRoundDuration) - 1);
-            dislikes += newDislikes;
-            views += newDislikes;
+            dislikes += Limit(newDislikes);
+            views += Limit(newDislikes);
         }
 
 		views += Time.deltaTime * Random.Range(0,100)/100;
