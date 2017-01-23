@@ -42,18 +42,18 @@ public class UIManager : MonoBehaviour
 		Slider slider = GameObject.Find ("Slider").GetComponent<Slider>();
 		slider.value = scoreManager.currentRoundDuration / scoreManager.maxDuration;
 
-		if (scoreManager.dangerWarning) {
-			log.text = "DANGER";
-		}
-		if (scoreManager.isFailed ()) {
-			log.text = "FAIL!";
-		}
+		//if (scoreManager.dangerWarning) {
+		//	log.text = "DANGER";
+		//}
+		//if (scoreManager.isFailed ()) {
+		//	log.text = "FAIL!";
+		//}
 
-		if (logClearTimer > logClearInterval) {
-			logClearTimer = 0;
-			log.text = "";
-		}
-		logClearTimer += Time.deltaTime;
+		//if (logClearTimer > logClearInterval) {
+		//	logClearTimer = 0;
+		//	log.text = "";
+		//}
+		//logClearTimer += Time.deltaTime;
 			
 	}
 
