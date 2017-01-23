@@ -11,6 +11,8 @@ Platform assembly: D:\GGJ2017\ggj2017_Data\Managed\UnityEngine.dll (this message
 Loading D:\GGJ2017\ggj2017_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: D:\GGJ2017\ggj2017_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading D:\GGJ2017\ggj2017_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\GGJ2017\ggj2017_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading D:\GGJ2017\ggj2017_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
 Platform assembly: D:\GGJ2017\ggj2017_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading D:\GGJ2017\ggj2017_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: D:\GGJ2017\ggj2017_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
@@ -29,7 +31,7 @@ Platform assembly: D:\GGJ2017\ggj2017_Data\Managed\pb_Stl.dll (this message is h
 Loading D:\GGJ2017\ggj2017_Data\Managed\pb_Stl.dll into Unity Child Domain
 Platform assembly: D:\GGJ2017\ggj2017_Data\Managed\Triangle.dll (this message is harmless)
 Loading D:\GGJ2017\ggj2017_Data\Managed\Triangle.dll into Unity Child Domain
-- Completed reload, in  0.039 seconds
+- Completed reload, in  0.509 seconds
 Platform assembly: D:\GGJ2017\ggj2017_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: D:\GGJ2017\ggj2017_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
@@ -40,119 +42,177 @@ The referenced script on this Behaviour (Game Object 'Handle') is missing!
  
 (Filename:  Line: 1754)
 
-The referenced script on this Behaviour (Game Object 'Handle') is missing!
- 
-(Filename:  Line: 1754)
-
-UnloadTime: 1.227791 ms
+UnloadTime: 2.600983 ms
 GVR Unity SDK Version: 1.1
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-DontDestroyOnLoad only work for root GameObjects or components on root GameObjects.
- 
-(Filename:  Line: 447)
-
-InvalidOperationException: Unsupported device.
-  at Gvr.Internal.BaseVRDevice.GetDevice () [0x00000] in <filename unknown>:0 
-  at GvrViewer.InitDevice () [0x00000] in <filename unknown>:0 
-  at GvrViewer.Awake () [0x00000] in <filename unknown>:0 
-UnityEngine.GameObject:SetActive(Boolean)
-PlatformSpecific:Awake()
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at GvrViewer.OnDisable () [0x00000] in <filename unknown>:0 
-UnityEngine.GameObject:SetActive(Boolean)
-PlatformSpecific:Awake()
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at GvrViewer.OnApplicationPause (Boolean pause) [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at GvrViewer.OnApplicationFocus (Boolean focus) [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 3780 -> priority: 1 
-  Thread -> id: 2864 -> priority: 1 
-NullReferenceException: Object reference not set to an instance of an object
-  at GvrViewer.OnApplicationFocus (Boolean focus) [0x00000] in <filename unknown>:0 
+  Thread -> id: 3d28 -> priority: 1 
+  Thread -> id: 3d54 -> priority: 1 
+The referenced script on this Behaviour (Game Object 'Handle') is missing!
  
-(Filename:  Line: -1)
+(Filename:  Line: 1754)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at GvrViewer.OnApplicationPause (Boolean pause) [0x00000] in <filename unknown>:0 
+The referenced script on this Behaviour (Game Object 'Handle') is missing!
  
-(Filename:  Line: -1)
+(Filename:  Line: 1754)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at GvrViewer.OnApplicationPause (Boolean pause) [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at GvrViewer.OnApplicationFocus (Boolean focus) [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at GvrViewer.OnApplicationFocus (Boolean focus) [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at GvrViewer.OnApplicationPause (Boolean pause) [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at GvrViewer.OnApplicationFocus (Boolean focus) [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-MatchMakingClient Create :https://mm.unet.unity3d.com/json/reply/CreateMatchRequest
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at GvrViewer.OnApplicationFocus (Boolean focus) [0x00000] in <filename unknown>:0 
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at GvrViewer.OnApplicationFocus (Boolean focus) [0x00000] in <filename unknown>:0 
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at GvrViewer.OnApplicationFocus (Boolean focus) [0x00000] in <filename unknown>:0 
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at GvrViewer.OnApplicationFocus (Boolean focus) [0x00000] in <filename unknown>:0 
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at GvrViewer.OnApplicationFocus (Boolean focus) [0x00000] in <filename unknown>:0 
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at GvrViewer.OnApplicationFocus (Boolean focus) [0x00000] in <filename unknown>:0 
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at GvrViewer.OnApplicationQuit () [0x00000] in <filename unknown>:0 
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+The referenced script on this Behaviour (Game Object 'Handle') is missing!
+ 
+(Filename:  Line: 1754)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.456141 ms
+
+Unloading 197 unused Assets to reduce memory usage. Loaded Objects now: 1060.
+Total: 9.141504 ms (FindLiveObjects: 0.052601 ms CreateObjectMapping: 0.050890 ms MarkObjects: 0.371202 ms  DeleteObjects: 8.666382 ms)
+
+The referenced script on this Behaviour (Game Object 'Handle') is missing!
+ 
+(Filename:  Line: 1754)
+
+The referenced script on this Behaviour (Game Object 'Handle') is missing!
+ 
+(Filename:  Line: 1754)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
