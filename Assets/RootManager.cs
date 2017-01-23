@@ -14,24 +14,35 @@ public class RootManager : MonoBehaviour {
 
     public ReactionScript ReactionScript = null;
 
-    void Start () {		
-//		try {
-//			SceneManager.LoadScene ("scene0_asset_test", LoadSceneMode.Additive);
-//		}
-//		catch {
-//			Debug.Log ("Failed to load scene0_asset_test");
-//		}
-//		try {
-//			SceneManager.UnloadScene(SceneManager.GetSceneByName("scene0"));
-//		}
-//		catch {
-//			Debug.Log ("failed to unload scene0");
-//		}
-//		if(ui == null) ui = GameObject.Find ("UI 1");			
-//		if(startButton == null) 	startButton = GameObject.Find ("StartButton");
-//		ui.SetActive(true);
-//		startButton.SetActive(true);
-	}
+    public static RootManager Instance = null;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    void Start () {
+
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+
+        //		try {
+        //			SceneManager.LoadScene ("scene0_asset_test", LoadSceneMode.Additive);
+        //		}
+        //		catch {
+        //			Debug.Log ("Failed to load scene0_asset_test");
+        //		}
+        //		try {
+        //			SceneManager.UnloadScene(SceneManager.GetSceneByName("scene0"));
+        //		}
+        //		catch {
+        //			Debug.Log ("failed to unload scene0");
+        //		}
+        //		if(ui == null) ui = GameObject.Find ("UI 1");			
+        //		if(startButton == null) 	startButton = GameObject.Find ("StartButton");
+        //		ui.SetActive(true);
+        //		startButton.SetActive(true);
+    }
 	
 	// Update is called once per frame
 	void Update () {

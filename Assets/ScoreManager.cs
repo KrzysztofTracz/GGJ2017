@@ -127,7 +127,7 @@ public class ScoreManager : MonoBehaviour
 			}
             else
             {
-                newDislikes = (Mathf.Exp(difficultyScale * currentRoundDuration) - 1);
+                newDislikes = (Mathf.Exp((difficultyScale / 100.0f) * currentRoundDuration) - 1);
             }			
 
 			dislikes += Limit(newDislikes);
