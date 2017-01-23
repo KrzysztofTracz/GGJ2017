@@ -15,6 +15,8 @@ public class SpawnDirector : MonoBehaviour {
     public float ElapsedTime = 0.0f;
     public float TotalTime   = 5.0f * 60.0f;
 
+    
+
     // Use this for initialization
     void Start ()
     {

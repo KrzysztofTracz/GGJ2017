@@ -63,10 +63,17 @@ public class EntController : NetworkBehaviour {
 
         Animator.SetBool("FootUp", true);
     }
-	
+
+    bool bustme = true;
+
     private void Update()
     {
-
+        if(PrankActive && bustme)
+        {
+            CameraController.Instance.Cutscenka.gameObject.SetActive(true);
+            bustme = false;
+            return;
+        }
 
         if (UIController.Instance.Fail == null) return;
 
